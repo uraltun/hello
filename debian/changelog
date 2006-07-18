@@ -1,3 +1,11 @@
+hello (2.1.1-5) unstable; urgency=low
+
+  * Removed checkdir stuff from debian/rules, as it is not very useful.
+  * Standards-Version: 3.7.2 (no changes for this).
+  * Updated config.guess and config.sub.
+
+ -- Santiago Vila <sanvila@debian.org>  Tue, 18 Jul 2006 19:55:02 +0200
+
 hello (2.1.1-4) unstable; urgency=low
 
   * Updated config.guess and config.sub for GNU/K*BSD.

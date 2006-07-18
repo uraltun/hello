@@ -2,7 +2,7 @@ Source: hello
 Section: devel
 Priority: optional
 Maintainer: Santiago Vila <sanvila@debian.org>
-Standards-Version: 3.6.1
+Standards-Version: 3.7.2
 
 Package: hello
 Architecture: any
