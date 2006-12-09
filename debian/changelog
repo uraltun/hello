@@ -1,3 +1,12 @@
+hello (2.2-1) unstable; urgency=low
+
+  * New upstream release.
+  * Repackaged source without GFDL manual.
+  * Option -m does no longer exist (Closes: #109895).
+  * Removed prerm and postinst, as info files are missing now.
+
+ -- Santiago Vila <sanvila@debian.org>  Sat,  9 Dec 2006 17:00:14 +0100
+
 hello (2.1.1-5) unstable; urgency=low
 
   * Removed checkdir stuff from debian/rules, as it is not very useful.
