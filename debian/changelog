@@ -1,3 +1,11 @@
+hello (2.2-2) unstable; urgency=low
+
+  * Removed all traces of checkroot. It's not really debian/rules job,
+    and the binary target will fail anyway if not invoked as root,
+    as there is a chown call.
+
+ -- Santiago Vila <sanvila@debian.org>  Wed, 11 Apr 2007 08:05:12 +0200
+
 hello (2.2-1) unstable; urgency=low
 
   * New upstream release.
