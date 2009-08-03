@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: hello 2.1.1\n"
 "Report-Msgid-Bugs-To: bug-hello@gnu.org\n"
-"POT-Creation-Date: 2006-11-13 16:45-0800\n"
+"POT-Creation-Date: 2008-12-09 10:50-0800\n"
 "PO-Revision-Date: 2002-10-29 21:15-0200\n"
 "Last-Translator: Alexandre Folle de Menezes <afmenez@terra.com.br>\n"
 "Language-Team: Brazilian Portuguese <ldp-br@bazar.conectiva.com.br>\n"
@@ -16,17 +16,17 @@ msgstr ""
 "Content-Type: text/plain; charset=ISO-8859-1\n"
 "Content-Transfer-Encoding: 8-bit\n"
 
-#: src/hello.c:95
+#: src/hello.c:100
 #, c-format
 msgid "%s: extra operand: %s\n"
 msgstr ""
 
-#: src/hello.c:97
+#: src/hello.c:102
 #, c-format
 msgid "Try `%s --help' for more information.\n"
 msgstr "Tente `%s --help' para maiores informações.\n"
 
-#: src/hello.c:104
+#: src/hello.c:109
 #, c-format
 msgid "hello, world\n"
 msgstr "bom dia, mundo\n"
@@ -37,7 +37,7 @@ msgstr "bom dia, mundo\n"
 #.
 #. [Note: For best viewing results use a UTF-8 locale, please.]
 #.
-#: src/hello.c:113
+#: src/hello.c:118
 #, c-format
 msgid ""
 "+---------------+\n"
@@ -48,26 +48,26 @@ msgstr ""
 "| Bom dia, mundo! |\n"
 "+-----------------+\n"
 
-#: src/hello.c:122
+#: src/hello.c:128
 msgid "Hello, world!"
 msgstr "Bom dia, mundo!"
 
 #. TRANSLATORS: --help output 1 (synopsis)
 #. no-wrap
-#: src/hello.c:140
+#: src/hello.c:150
 #, fuzzy, c-format
 msgid "Usage: %s [OPTION]...\n"
 msgstr "Uso: %s [OPÇÃO]\n"
 
 #. TRANSLATORS: --help output 2 (brief description)
 #. no-wrap
-#: src/hello.c:145
+#: src/hello.c:155
 msgid "Print a friendly, customizable greeting.\n"
 msgstr ""
 
 #. TRANSLATORS: --help output 3: options 1/2
 #. no-wrap
-#: src/hello.c:151
+#: src/hello.c:161
 msgid ""
 "  -h, --help          display this help and exit\n"
 "  -v, --version       display version information and exit\n"
@@ -77,7 +77,7 @@ msgstr ""
 
 #. TRANSLATORS: --help output 4: options 2/2
 #. no-wrap
-#: src/hello.c:158
+#: src/hello.c:168
 #, fuzzy
 msgid ""
 "  -t, --traditional       use traditional greeting format\n"
@@ -93,84 +93,85 @@ msgstr ""
 #. for this application.  Please add _another line_ with the
 #. address for translation bugs.
 #. no-wrap
-#: src/hello.c:169
+#: src/hello.c:179
 #, c-format
 msgid "Report bugs to <%s>.\n"
 msgstr ""
 "Reporte erros para <%s>.\n"
 "Reporte erros da tradução para <afmenez@terra.com.br>.\n"
 
-#: src/hello.c:187
+#: src/hello.c:197
 #, c-format
 msgid ""
 "Copyright (C) %s Free Software Foundation, Inc.\n"
-"License: GNU GPL v2+ <http://www.gnu.org/licenses/gpl.html>\n"
-"This is free software.  There is NO WARRANTY, to the extent permitted by "
-"law.\n"
+"License GPLv3+: GNU GPL version 3 or later <http://gnu.org/licenses/gpl."
+"html>\n"
+"This is free software: you are free to change and redistribute it.\n"
+"There is NO WARRANTY, to the extent permitted by law.\n"
 msgstr ""
 
 #: gnulib/lib/error.c:125
 msgid "Unknown system error"
 msgstr ""
 
-#: gnulib/lib/getopt.c:531 gnulib/lib/getopt.c:547
+#: gnulib/lib/getopt.c:526 gnulib/lib/getopt.c:542
 #, c-format
 msgid "%s: option `%s' is ambiguous\n"
 msgstr "%s: opção `%s' é ambígua\n"
 
-#: gnulib/lib/getopt.c:580 gnulib/lib/getopt.c:584
+#: gnulib/lib/getopt.c:575 gnulib/lib/getopt.c:579
 #, c-format
 msgid "%s: option `--%s' doesn't allow an argument\n"
 msgstr "%s: opção `--%s' não permite um argumento\n"
 
-#: gnulib/lib/getopt.c:593 gnulib/lib/getopt.c:598
+#: gnulib/lib/getopt.c:588 gnulib/lib/getopt.c:593
 #, c-format
 msgid "%s: option `%c%s' doesn't allow an argument\n"
 msgstr "%s: opção `%c%s' não permite um argumento\n"
 
-#: gnulib/lib/getopt.c:641 gnulib/lib/getopt.c:660 gnulib/lib/getopt.c:976
-#: gnulib/lib/getopt.c:995
+#: gnulib/lib/getopt.c:636 gnulib/lib/getopt.c:655 gnulib/lib/getopt.c:971
+#: gnulib/lib/getopt.c:990
 #, c-format
 msgid "%s: option `%s' requires an argument\n"
 msgstr "%s: opção `%s' requer um argumento\n"
 
-#: gnulib/lib/getopt.c:698 gnulib/lib/getopt.c:701
+#: gnulib/lib/getopt.c:693 gnulib/lib/getopt.c:696
 #, c-format
 msgid "%s: unrecognized option `--%s'\n"
 msgstr "%s: opção `--%s' não reconhecida\n"
 
-#: gnulib/lib/getopt.c:709 gnulib/lib/getopt.c:712
+#: gnulib/lib/getopt.c:704 gnulib/lib/getopt.c:707
 #, c-format
 msgid "%s: unrecognized option `%c%s'\n"
 msgstr "%s: opção `%c%s' não reconhecida\n"
 
-#: gnulib/lib/getopt.c:764 gnulib/lib/getopt.c:767
+#: gnulib/lib/getopt.c:759 gnulib/lib/getopt.c:762
 #, c-format
 msgid "%s: illegal option -- %c\n"
 msgstr "%s: opção ilegal -- %c\n"
 
-#: gnulib/lib/getopt.c:773 gnulib/lib/getopt.c:776
+#: gnulib/lib/getopt.c:768 gnulib/lib/getopt.c:771
 #, c-format
 msgid "%s: invalid option -- %c\n"
 msgstr "%s: opção inválida -- %c\n"
 
-#: gnulib/lib/getopt.c:828 gnulib/lib/getopt.c:844 gnulib/lib/getopt.c:1048
-#: gnulib/lib/getopt.c:1066
+#: gnulib/lib/getopt.c:823 gnulib/lib/getopt.c:839 gnulib/lib/getopt.c:1043
+#: gnulib/lib/getopt.c:1061
 #, c-format
 msgid "%s: option requires an argument -- %c\n"
 msgstr "%s: opção requer um argumento -- %c\n"
 
-#: gnulib/lib/getopt.c:897 gnulib/lib/getopt.c:913
+#: gnulib/lib/getopt.c:892 gnulib/lib/getopt.c:908
 #, c-format
 msgid "%s: option `-W %s' is ambiguous\n"
 msgstr "%s: opção `-W %s' é ambígua\n"
 
-#: gnulib/lib/getopt.c:937 gnulib/lib/getopt.c:955
+#: gnulib/lib/getopt.c:932 gnulib/lib/getopt.c:950
 #, c-format
 msgid "%s: option `-W %s' doesn't allow an argument\n"
 msgstr "%s: opção `-W %s' não permite um argumento\n"
 
-#: gnulib/lib/closeout.c:74
+#: gnulib/lib/closeout.c:112
 msgid "write error"
 msgstr ""
 
@@ -193,15 +194,15 @@ msgstr ""
 #. If you don't know what to put here, please see
 #. <http://en.wikipedia.org/wiki/Quotation_mark#Glyphs>
 #. and use glyphs suitable for your language.
-#: gnulib/lib/quotearg.c:245
+#: gnulib/lib/quotearg.c:266
 msgid "`"
 msgstr ""
 
-#: gnulib/lib/quotearg.c:246
+#: gnulib/lib/quotearg.c:267
 msgid "'"
 msgstr ""
 
-#: gnulib/lib/xalloc-die.c:35
+#: gnulib/lib/xalloc-die.c:34
 #, fuzzy
 msgid "memory exhausted"
 msgstr "%s: Memória virtual esgotada\n"

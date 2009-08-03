@@ -1,12 +1,12 @@
 /* hello.c -- print a greeting message and exit.
 
-   Copyright (C) 1992, 1995, 1996, 1997, 1998, 1999, 2000, 2001, 2002,
-   2005, 2006 Free Software Foundation, Inc.
+   Copyright 1992, 1995, 1996, 1997, 1998, 1999, 2000, 2001, 2002, 2005,
+   2006, 2007, 2008 Free Software Foundation, Inc.
 
-   This program is free software; you can redistribute it and/or modify
+   This program is free software: you can redistribute it and/or modify
    it under the terms of the GNU General Public License as published by
-   the Free Software Foundation; either version 2, or (at your option)
-   any later version.
+   the Free Software Foundation, either version 3 of the License, or
+   (at your option) any later version.
 
    This program is distributed in the hope that it will be useful,
    but WITHOUT ANY WARRANTY; without even the implied warranty of
@@ -14,8 +14,7 @@
    GNU General Public License for more details.
 
    You should have received a copy of the GNU General Public License
-   along with this program; if not, write to the Free Software Foundation,
-   Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301, USA.  */
+   along with this program.  If not, see <http://www.gnu.org/licenses/>.  */
 
 #include <config.h>
 #include "system.h"
@@ -33,6 +32,12 @@ static const struct option longopts[] =
   { NULL, 0, NULL, 0 }
 };
 
+/* Different types of greetings; only one per invocation.  */
+typedef enum {
+  greet_gnu, greet_new, greet_traditional, greet_user
+} greeting_type;
+
+/* Forward declarations.  */
 static void print_help (void);
 static void print_version (void);
 
@@ -40,8 +45,9 @@ int
 main (int argc, char *argv[])
 {
   int optc;
-  int t = 0, n = 0, lose = 0;
-  const char *greeting = NULL;
+  int lose = 0;
+  const char *greeting_msg = NULL;
+  greeting_type g = greet_gnu;
 
   program_name = argv[0];
 
@@ -54,34 +60,33 @@ main (int argc, char *argv[])
   textdomain (PACKAGE);
 #endif
 
-  /* Even exiting has subtleties.  The /dev/full device on GNU/Linux
-     can be used for testing whether writes are checked properly.  For
-     instance, hello >/dev/null should exit unsuccessfully.  On exit,
-     if any writes failed, change the exit status.  This is
-     implemented in the Gnulib module "closeout".  */
+  /* Even exiting has subtleties.  On exit, if any writes failed, change
+     the exit status.  The /dev/full device on GNU/Linux can be used for
+     testing; for instance, hello >/dev/full should exit unsuccessfully.
+     This is implemented in the Gnulib module "closeout".  */
   atexit (close_stdout);
 
   while ((optc = getopt_long (argc, argv, "g:hntv", longopts, NULL)) != -1)
     switch (optc)
       {
-      /* One goal here is having --help and --version exit immediately,
-         per GNU coding standards.  */
+      /* --help and --version exit immediately, per GNU coding standards.  */
       case 'v':
         print_version ();
         exit (EXIT_SUCCESS);
         break;
       case 'g':
-        greeting = optarg;
+        greeting_msg = optarg;
+        g = greet_user;
         break;
       case 'h':
         print_help ();
         exit (EXIT_SUCCESS);
         break;
       case 'n':
-        n = 1;
+        g = greet_new;
         break;
       case 't':
-        t = 1;
+        g = greet_traditional;
         break;
       default:
         lose = 1;
@@ -100,10 +105,10 @@ main (int argc, char *argv[])
     }
 
   /* Print greeting message and exit. */
-  if (t)
+  if (g == greet_traditional)
     printf (_("hello, world\n"));
 
-  else if (n)
+  else if (g == greet_new)
     /* TRANSLATORS: Use box drawing characters or other fancy stuff
        if your encoding (e.g., UTF-8) allows it.  If done so add the
        following note, please:
@@ -116,13 +121,18 @@ main (int argc, char *argv[])
 +---------------+\n\
 "));
 
-  else
-    {
-      if (!greeting)
-        greeting = _("Hello, world!");
-      puts (greeting);
-    }
+  else if (g == greet_user)
+    puts (greeting_msg);
+
+  else if (g == greet_gnu)
+    puts (_("Hello, world!"));
   
+  else {
+    /* No need for this impossible message to be translated.  */
+    fprintf (stderr, "Impossible hello value %d\n", g);
+    exit (EXIT_FAILURE);
+  }
+
   exit (EXIT_SUCCESS);
 }
 
@@ -186,7 +196,8 @@ print_version (void)
      year comes around.  */
   printf (_("\
 Copyright (C) %s Free Software Foundation, Inc.\n\
-License: GNU GPL v2+ <http://www.gnu.org/licenses/gpl.html>\n\
-This is free software.  There is NO WARRANTY, to the extent permitted by law.\n"),
-              "2006");
+License GPLv3+: GNU GPL version 3 or later <http://gnu.org/licenses/gpl.html>\n\
+This is free software: you are free to change and redistribute it.\n\
+There is NO WARRANTY, to the extent permitted by law.\n"),
+              "2008");
 }

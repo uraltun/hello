@@ -1,3 +1,36 @@
+2008-12-09  Karl Berry  <karl@gnu.org>
+
+	* Version 2.4.
+
+2008-11-28  Karl Berry  <karl@tug.org>
+
+	* pretest version 2.3.92.
+
+2008-11-27  Karl Berry  <karl@gnu.org>
+
+	* Makefile.am, and all other source files: use new GPLv3 notice 
+	without physical FSF address.
+
+2008-11-07  Karl Berry  <karl@tug.org>
+
+	* pretest version 2.3.91.
+
+2008-02-26  Karl Berry  <karl@gnu.org>
+
+	* autogen.sh: autoconf before autoheader, per autoreconf.
+
+2007-07-26  Karl Berry  <karl@gnu.org>
+
+	* configure.ac (AC_INIT_AUTOMAKE): let's skip dist-bzip2.
+
+2007-06-29  Karl Berry  <karl@gnu.org>
+
+	* Version 2.3.
+
+2007-06-26  Karl Berry  <karl@gnu.org>
+
+	* pretest version 2.2.90.
+
 2006-11-23  Karl Berry  <karl@gnu.org>
 
 	* Version 2.2.
@@ -816,8 +849,8 @@ Thu Jul 29 14:31:18 1993  Charles Hannum  (mycroft@trinity.gnu.ai.mit.edu)
 	testdata: Add sample output for new test cases.
 
 
-Copyright (C) 1993, 1995, 1996, 1997, 1998, 1999, 2000, 2001, 2002,
-2004, 2005, 2006 Free Software Foundation, Inc.
+Copyright 1993, 1995, 1996, 1997, 1998, 1999, 2000, 2001, 2002,
+2004, 2005, 2006, 2008 Free Software Foundation, Inc.
 
 Copying and distribution of this file, with or without modification, are
 permitted in any medium without royalty provided the copyright notice

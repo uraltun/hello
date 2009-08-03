@@ -1,3 +1,16 @@
+hello (2.4-1) unstable; urgency=low
+
+  * New upstream release. License is now GPLv3 or later.
+  * Manual is included again, as it's now GFDL without invariant sections.
+  * Clarified manual: If more than one of the greeting options is specified
+    (`-g', `-n', `-t', and their long-named equivalents), whichever comes
+    last takes precedence. Closes: #457941.
+  * Don't pass -isp to dpkg-gencontrol, as it's deprecated. Closes: #508833.
+  * Changed source URL in copyright file to use http, not ftp.
+  * Standards-Version: 3.8.2 (no changes for this).
+
+ -- Santiago Vila <sanvila@debian.org>  Mon, 03 Aug 2009 23:34:18 +0200
+
 hello (2.2-3) unstable; urgency=low
 
   * Added debian/watch file. Closes: #489213.

@@ -1,0 +1,4 @@
+#!/bin/sh
+set -e
+install-info --quiet --section Development Development \
+  /usr/share/info/hello.info
