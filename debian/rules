@@ -42,7 +42,6 @@ binary-indep: build
 binary-arch: build
 	rm -rf debian/tmp
 	install -d debian/tmp/DEBIAN $(docdir)
-	install -m 755 debian/postinst debian/prerm debian/tmp/DEBIAN
 	$(MAKE) INSTALL_PROGRAM="$(INSTALL_PROGRAM)" \
 		prefix=$$(pwd)/debian/tmp/usr install
 	$(STRIP) debian/tmp/usr/bin/hello

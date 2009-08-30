@@ -1,3 +1,17 @@
+hello (2.4-3) unstable; urgency=low
+
+  * Modified doc/Makefile.in to avoid /usr/share/info/dir.gz.
+
+ -- Santiago Vila <sanvila@debian.org>  Sun, 30 Aug 2009 13:05:52 +0200
+
+hello (2.4-2) unstable; urgency=low
+
+  * Removed prerm and postinst as they are no longer needed.
+  * Added dependency on "dpkg (>= 1.15.4) | install-info".
+  * Standards-Version: 3.8.3.
+
+ -- Santiago Vila <sanvila@debian.org>  Wed, 26 Aug 2009 17:01:36 +0200
+
 hello (2.4-1) unstable; urgency=low
 
   * New upstream release. License is now GPLv3 or later.

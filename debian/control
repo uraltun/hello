@@ -2,11 +2,11 @@ Source: hello
 Section: devel
 Priority: optional
 Maintainer: Santiago Vila <sanvila@debian.org>
-Standards-Version: 3.8.2
+Standards-Version: 3.8.3
 
 Package: hello
 Architecture: any
-Depends: ${shlibs:Depends}
+Depends: ${shlibs:Depends}, dpkg (>= 1.15.4) | install-info
 Description: The classic greeting, and a good example
  The GNU hello program produces a familiar, friendly greeting.  It
  allows non-programmers to use a classic computer science tool which
