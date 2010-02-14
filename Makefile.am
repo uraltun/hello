@@ -2,7 +2,7 @@
 # and all subdirectories).
 # Makefile for the top-level directory of GNU hello.
 # 
-# Copyright 1997, 1998, 2005, 2006, 2007, 2008 Free Software
+# Copyright 1997, 1998, 2005, 2006, 2007, 2008, 2009 Free Software
 # Foundation, Inc.
 #
 # This program is free software; you can redistribute it and/or modify
@@ -32,10 +32,9 @@ SUBDIRS = contrib gnulib/lib po src doc man tests
 # official release is made (and only if you care to provide diffs).
 #
 hello_pre = 2.3
-#
 diff: diffcheck
 	@(echo "To apply these patches, cd to the main directory of the package"; \
-	  echo "and then use \`patch -p1 < hello-XXX.diff'."; \
+	  echo "and then use \`patch -p1 <hello-XXX.diff'."; \
 	  echo "Before building the program, run \`autogen.sh'."; ) > \
 	    $(PACKAGE)-$(hello_pre)-$(VERSION).diff
 	-diff -rc2P --exclude=configure --exclude=config.h.in --exclude=*.info \
@@ -56,10 +55,10 @@ diffcheck:
 	    fi ; \
 	done
 
-# From coreutils.
 # Verify that all source files using _() are listed in po/POTFILES.in.
 # The idea is to run this before making pretests, as well as official
-# releases, so that 
+# releases, so that translators will be sure to have all the messages.
+# (From coreutils.)
 po-check:
 	if test -f po/POTFILES.in; then					\
 	  grep -E -v '^(#|$$)' po/POTFILES.in				\
@@ -81,3 +80,29 @@ po-check:
 	  diff -u $@-1 $@-2 || exit 1;					\
 	  rm -f $@-1 $@-2;						\
 	fi
+
+# Example of updating the online web pages for the documentation
+# with the gendocs.sh script; see
+# http://www.gnu.org/prep/maintain/html_node/Invoking-gendocs_002esh.html
+#
+gnulib = $(HOME)/gnu/src/gnulib
+gendocs = $(gnulib)/build-aux/gendocs.sh
+gendocs_templates = $(gnulib)/doc
+gendocs_envvars = GENDOCS_TEMPLATE_DIR=$(gendocs_templates)
+#
+manual = hello
+manual_title = "Hello, GNU World"
+email = bug-hello@gnu.org
+gendocs_args = --email $(email) $(manual) $(manual_title)
+#
+www_target = $(HOME)/gnu/www/hello/manual
+#
+doctemp = doc/wwwtemp
+wwwdoc:
+	rm -rf $(doctemp) && mkdir $(doctemp)
+	cd $(doctemp) \
+	&& ln -s ../*.texi . \
+	&& env $(gendocs_envvars) $(gendocs) $(gendocs_args)
+	cp -arf $(doctemp)/manual/. $(www_target)
+	ls -ltu $(www_target)/html_node | tail  # cvs rm -f obsolete files
+# followed by cvs add of new files and cvs commit.

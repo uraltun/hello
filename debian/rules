@@ -10,7 +10,6 @@
 package = hello
 docdir = debian/tmp/usr/share/doc/$(package)
 
-CC = gcc
 CFLAGS = -g -Wall
 INSTALL_PROGRAM = install
 
@@ -24,9 +23,19 @@ ifeq (,$(findstring nostrip,$(DEB_BUILD_OPTIONS)))
   STRIP = strip --remove-section=.comment --remove-section=.note
 endif
 
+export DEB_HOST_GNU_TYPE  ?= $(shell dpkg-architecture -qDEB_HOST_GNU_TYPE)
+export DEB_BUILD_GNU_TYPE ?= $(shell dpkg-architecture -qDEB_BUILD_GNU_TYPE)
+
+# Recommended snippet for Autoconf 2.52 or later
+ifeq ($(DEB_BUILD_GNU_TYPE), $(DEB_HOST_GNU_TYPE))
+  confflags += --build $(DEB_HOST_GNU_TYPE)
+else
+  confflags += --build $(DEB_BUILD_GNU_TYPE) --host $(DEB_HOST_GNU_TYPE)
+endif
+
 build:
-	./configure --prefix=/usr
-	$(MAKE) CC="$(CC)" CFLAGS="$(CFLAGS)"
+	./configure $(confflags) --prefix=/usr
+	$(MAKE) CFLAGS="$(CFLAGS)"
 	touch build
 
 clean:

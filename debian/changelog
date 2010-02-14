@@ -1,3 +1,12 @@
+hello (2.5-1) unstable; urgency=low
+
+  * New upstream release.
+  * Added homepage field to control file.
+  * Added cross-compilation support. Closes: #550327.
+  * Standards-Version: 3.8.4 (no special changes for this).
+
+ -- Santiago Vila <sanvila@debian.org>  Sun, 14 Feb 2010 17:25:04 +0000
+
 hello (2.4-3) unstable; urgency=low
 
   * Modified doc/Makefile.in to avoid /usr/share/info/dir.gz.

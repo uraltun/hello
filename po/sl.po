@@ -1,15 +1,16 @@
 # -*- mode:po; coding:utf-8; -*- Slovenian message catalog for GNU hello.
-# Copyright (C) 1996 Free Software Foundation, Inc.
-# Primoz Peterlin <primoz.peterlin@biofiz.mf.uni-lj.si>, 1996, 2005.
+# Copyright (C) 1996, 2005, 2009 Free Software Foundation, Inc.
+# This file is distributed under the same license as the hello package.
+# Primoz Peterlin <primoz.peterlin@biofiz.mf.uni-lj.si>, 1996, 2005, 2009.
 #
-# $Id: sl.po,v 1.15 2008/12/09 18:52:28 karl Exp $
+# $Id: sl.po,v 1.18 2010/02/01 17:35:19 karl Exp $
 #
 msgid ""
 msgstr ""
-"Project-Id-Version: hello 2.1.1\n"
+"Project-Id-Version: hello 2.3.91\n"
 "Report-Msgid-Bugs-To: bug-hello@gnu.org\n"
-"POT-Creation-Date: 2008-12-09 10:50-0800\n"
-"PO-Revision-Date: 2005-08-31 12:06+0200\n"
+"POT-Creation-Date: 2010-01-31 11:59-0800\n"
+"PO-Revision-Date: 2009-05-05 11:12+0200\n"
 "Last-Translator: Primoz Peterlin <primoz.peterlin@biofiz.mf.uni-lj.si>\n"
 "Language-Team: Slovenian <translation-team-sl@lists.sourceforge.net>\n"
 "MIME-Version: 1.0\n"
@@ -19,7 +20,7 @@ msgstr ""
 #: src/hello.c:100
 #, c-format
 msgid "%s: extra operand: %s\n"
-msgstr ""
+msgstr "%s: dodatni operand: %s\n"
 
 #: src/hello.c:102
 #, c-format
@@ -56,15 +57,15 @@ msgstr "Zdravo, svet!"
 #. TRANSLATORS: --help output 1 (synopsis)
 #. no-wrap
 #: src/hello.c:150
-#, fuzzy, c-format
+#, c-format
 msgid "Usage: %s [OPTION]...\n"
-msgstr "Uporaba: %s [IZBIRA]\n"
+msgstr "Uporaba: %s [IZBIRA]...\n"
 
 #. TRANSLATORS: --help output 2 (brief description)
 #. no-wrap
 #: src/hello.c:155
 msgid "Print a friendly, customizable greeting.\n"
-msgstr ""
+msgstr "Izpiše prijazen, nastavljiv pozdrav.\n"
 
 #. TRANSLATORS: --help output 3: options 1/2
 #. no-wrap
@@ -79,29 +80,49 @@ msgstr ""
 #. TRANSLATORS: --help output 4: options 2/2
 #. no-wrap
 #: src/hello.c:168
-#, fuzzy
 msgid ""
 "  -t, --traditional       use traditional greeting format\n"
 "  -n, --next-generation   use next-generation greeting format\n"
 "  -g, --greeting=TEXT     use TEXT as the greeting message\n"
 msgstr ""
-"  -t, --traditional      tradicionalna oblika pozdrava\n"
-"  -n, --next-generation  nova generacija oblike pozdrava\n"
-"  -m, --mail             izpis elektronske pošte\n"
+"  -t, --traditional       tradicionalna oblika pozdrava\n"
+"  -n, --next-generation   nova generacija oblike pozdrava\n"
+"  -g, --greeting=POZDRAV  uporabi POZDRAV kot pozdravno besedilo\n"
 
-#. TRANSLATORS: --help output 5 (end)
+#. TRANSLATORS: --help output 5+ (reports)
 #. TRANSLATORS: the placeholder indicates the bug-reporting address
 #. for this application.  Please add _another line_ with the
 #. address for translation bugs.
 #. no-wrap
 #: src/hello.c:179
-#, c-format
-msgid "Report bugs to <%s>.\n"
+#, fuzzy, c-format
+msgid "Report bugs to: %s\n"
 msgstr ""
 "Poročila o napakah javite na <%s>, poročila o napakah v slovenskem prevodu\n"
 "uporabniškega vmesnika na <primoz.peterlin@biofiz.mf.uni-lj.si>.\n"
 
-#: src/hello.c:197
+#: src/hello.c:182
+#, fuzzy, c-format
+msgid "Report %s bugs to: %s\n"
+msgstr ""
+"Poročila o napakah javite na <%s>, poročila o napakah v slovenskem prevodu\n"
+"uporabniškega vmesnika na <primoz.peterlin@biofiz.mf.uni-lj.si>.\n"
+
+#: src/hello.c:186
+#, c-format
+msgid "%s home page: <%s>\n"
+msgstr ""
+
+#: src/hello.c:188
+#, c-format
+msgid "%s home page: <http://www.gnu.org/software/%s/>\n"
+msgstr ""
+
+#: src/hello.c:191
+msgid "General help using GNU software: <http://www.gnu.org/gethelp/>\n"
+msgstr ""
+
+#: src/hello.c:209
 #, c-format
 msgid ""
 "Copyright (C) %s Free Software Foundation, Inc.\n"
@@ -110,71 +131,71 @@ msgid ""
 "This is free software: you are free to change and redistribute it.\n"
 "There is NO WARRANTY, to the extent permitted by law.\n"
 msgstr ""
+"Copyright (C) %s Free Software Foundation, Inc.\n"
+"GPLv3+: GNU GPL, 3. izdaja ali poznejša <http://www.gnu.org/licenses/gpl."
+"html>\n"
+"To je prosto programje; lahko ga redistribuirate in/ali spreminjate.\n"
+"Za izdelek ni NOBENEGA JAMSTVA, do z zakonom dovoljene meje.\n"
 
-#: gnulib/lib/error.c:125
+#: gnulib/lib/error.c:153
 msgid "Unknown system error"
-msgstr ""
+msgstr "Neznana sistemska napaka"
 
-#: gnulib/lib/getopt.c:526 gnulib/lib/getopt.c:542
-#, c-format
-msgid "%s: option `%s' is ambiguous\n"
+#: gnulib/lib/getopt.c:529 gnulib/lib/getopt.c:545
+#, fuzzy, c-format
+msgid "%s: option '%s' is ambiguous\n"
 msgstr "%s: izbira »%s« ni enoznačna\n"
 
-#: gnulib/lib/getopt.c:575 gnulib/lib/getopt.c:579
-#, c-format
-msgid "%s: option `--%s' doesn't allow an argument\n"
+#: gnulib/lib/getopt.c:578 gnulib/lib/getopt.c:582
+#, fuzzy, c-format
+msgid "%s: option '--%s' doesn't allow an argument\n"
 msgstr "%s: izbira »--%s« ne dovoljuje argumenta\n"
 
-#: gnulib/lib/getopt.c:588 gnulib/lib/getopt.c:593
-#, c-format
-msgid "%s: option `%c%s' doesn't allow an argument\n"
+#: gnulib/lib/getopt.c:591 gnulib/lib/getopt.c:596
+#, fuzzy, c-format
+msgid "%s: option '%c%s' doesn't allow an argument\n"
 msgstr "%s: izbira »%c%s« ne dovoljuje argumenta\n"
 
-#: gnulib/lib/getopt.c:636 gnulib/lib/getopt.c:655 gnulib/lib/getopt.c:971
-#: gnulib/lib/getopt.c:990
-#, c-format
-msgid "%s: option `%s' requires an argument\n"
+#: gnulib/lib/getopt.c:639 gnulib/lib/getopt.c:658 gnulib/lib/getopt.c:961
+#: gnulib/lib/getopt.c:980
+#, fuzzy, c-format
+msgid "%s: option '%s' requires an argument\n"
 msgstr "%s: izbira »%s« zahteva argument\n"
 
-#: gnulib/lib/getopt.c:693 gnulib/lib/getopt.c:696
-#, c-format
-msgid "%s: unrecognized option `--%s'\n"
+#: gnulib/lib/getopt.c:696 gnulib/lib/getopt.c:699
+#, fuzzy, c-format
+msgid "%s: unrecognized option '--%s'\n"
 msgstr "%s: neprepoznana izbira »--%s«\n"
 
-#: gnulib/lib/getopt.c:704 gnulib/lib/getopt.c:707
-#, c-format
-msgid "%s: unrecognized option `%c%s'\n"
+#: gnulib/lib/getopt.c:707 gnulib/lib/getopt.c:710
+#, fuzzy, c-format
+msgid "%s: unrecognized option '%c%s'\n"
 msgstr "%s: neprepoznana izbira »%c%s«\n"
 
 #: gnulib/lib/getopt.c:759 gnulib/lib/getopt.c:762
-#, c-format
-msgid "%s: illegal option -- %c\n"
-msgstr "%s: nedovoljena izbira -- %c\n"
-
-#: gnulib/lib/getopt.c:768 gnulib/lib/getopt.c:771
-#, c-format
-msgid "%s: invalid option -- %c\n"
+#, fuzzy, c-format
+msgid "%s: invalid option -- '%c'\n"
 msgstr "%s: neveljavna izbira -- %c\n"
 
-#: gnulib/lib/getopt.c:823 gnulib/lib/getopt.c:839 gnulib/lib/getopt.c:1043
-#: gnulib/lib/getopt.c:1061
-#, c-format
-msgid "%s: option requires an argument -- %c\n"
+#: gnulib/lib/getopt.c:812 gnulib/lib/getopt.c:829 gnulib/lib/getopt.c:1032
+#: gnulib/lib/getopt.c:1050
+#, fuzzy, c-format
+msgid "%s: option requires an argument -- '%c'\n"
 msgstr "%s: izbira zahteva argument -- %c\n"
 
-#: gnulib/lib/getopt.c:892 gnulib/lib/getopt.c:908
-#, c-format
-msgid "%s: option `-W %s' is ambiguous\n"
+#: gnulib/lib/getopt.c:882 gnulib/lib/getopt.c:898
+#, fuzzy, c-format
+msgid "%s: option '-W %s' is ambiguous\n"
 msgstr "%s: izbira »-W %s« ni enoznačna\n"
 
-#: gnulib/lib/getopt.c:932 gnulib/lib/getopt.c:950
-#, c-format
-msgid "%s: option `-W %s' doesn't allow an argument\n"
+#: gnulib/lib/getopt.c:922 gnulib/lib/getopt.c:940
+#, fuzzy, c-format
+msgid "%s: option '-W %s' doesn't allow an argument\n"
 msgstr "%s: izbira »-W %s« ne dovoljuje argumenta\n"
 
 #: gnulib/lib/closeout.c:112
 msgid "write error"
-msgstr ""
+msgstr "napaka pri pisanju"
 
 #. TRANSLATORS:
 #. Get translations for open and closing quotation marks.
@@ -189,25 +210,27 @@ msgstr ""
 #. translate "`" to U+201C (LEFT DOUBLE QUOTATION MARK), and
 #. should translate "'" to U+201D (RIGHT DOUBLE QUOTATION
 #. MARK).  A British English Unicode locale should instead
-#. translate these to U+2018 (LEFT SINGLE QUOTATION MARK) and
-#. U+2019 (RIGHT SINGLE QUOTATION MARK), respectively.
+#. translate these to U+2018 (LEFT SINGLE QUOTATION MARK)
+#. and U+2019 (RIGHT SINGLE QUOTATION MARK), respectively.
 #.
 #. If you don't know what to put here, please see
 #. <http://en.wikipedia.org/wiki/Quotation_mark#Glyphs>
 #. and use glyphs suitable for your language.
-#: gnulib/lib/quotearg.c:266
+#: gnulib/lib/quotearg.c:272
 msgid "`"
-msgstr ""
+msgstr "»"
 
-#: gnulib/lib/quotearg.c:267
+#: gnulib/lib/quotearg.c:273
 msgid "'"
-msgstr ""
+msgstr "«"
 
 #  Morda ,,Zmanjkalo pomnilnika''?
 #: gnulib/lib/xalloc-die.c:34
-#, fuzzy
 msgid "memory exhausted"
-msgstr "%s: zmanjkalo virtualnega pomnilnika\n"
+msgstr "zmanjkalo pomnilnika"
+
+#~ msgid "%s: illegal option -- %c\n"
+#~ msgstr "%s: nedovoljena izbira -- %c\n"
 
 #~ msgid "Too many arguments\n"
 #~ msgstr "Preveč argumentov\n"
@@ -215,12 +238,12 @@ msgstr "%s: zmanjkalo virtualnega pomnilnika\n"
 #~ msgid "GNU hello, THE greeting printing program.\n"
 #~ msgstr "GNU hello: program, ki vas pozdravi.\n"
 
-#, fuzzy
 #~ msgid ""
 #~ "Copyright (C) %s Free Software Foundation, Inc.\n"
 #~ "There is NO warranty; not even for MERCHANTABILITY or FITNESS FOR A\n"
-#~ "PARTICULAR PURPOSE.  You may redistribute copies of GNU %s\n"
-#~ "under the terms of the GNU General Public License.\n"
+#~ "PARTICULAR PURPOSE.  You may redistribute copies of GNU %s under the "
+#~ "terms\n"
+#~ "of the GNU General Public License.\n"
 #~ "For more information about these matters, see the file named COPYING.\n"
 #~ msgstr ""
 #~ "Copyright (c) %s Free Software Foundation, Inc.\n"
