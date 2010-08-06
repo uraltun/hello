@@ -11,15 +11,12 @@ package = hello
 docdir = debian/tmp/usr/share/doc/$(package)
 
 CFLAGS = -g -Wall
-INSTALL_PROGRAM = install
-
 STRIP = true
 
 ifeq (,$(findstring noopt,$(DEB_BUILD_OPTIONS)))
   CFLAGS += -O2
 endif
 ifeq (,$(findstring nostrip,$(DEB_BUILD_OPTIONS)))
-  INSTALL_PROGRAM += -s
   STRIP = strip --remove-section=.comment --remove-section=.note
 endif
 
@@ -51,8 +48,7 @@ binary-indep: build
 binary-arch: build
 	rm -rf debian/tmp
 	install -d debian/tmp/DEBIAN $(docdir)
-	$(MAKE) INSTALL_PROGRAM="$(INSTALL_PROGRAM)" \
-		prefix=$$(pwd)/debian/tmp/usr install
+	$(MAKE) prefix=$$(pwd)/debian/tmp/usr install
 	$(STRIP) debian/tmp/usr/bin/hello
 	cp -a NEWS debian/copyright $(docdir)
 	cp -a debian/changelog $(docdir)/changelog.Debian

@@ -2,8 +2,8 @@ Source: hello
 Section: devel
 Priority: optional
 Maintainer: Santiago Vila <sanvila@debian.org>
-Standards-Version: 3.8.4
-Homepage: http://www.gnu.org/software/hello
+Standards-Version: 3.9.1
+Homepage: http://www.gnu.org/software/hello/
 
 Package: hello
 Architecture: any
