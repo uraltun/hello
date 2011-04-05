@@ -1,3 +1,12 @@
+hello (2.7-1) unstable; urgency=low
+
+  * New upstream release.
+  * Use chown with numeric value 0 instead of "root".
+  * Make package cross-buildable without binutils-multiarch.
+    Thanks to Héctor Orón. Closes: #616444.
+
+ -- Santiago Vila <sanvila@debian.org>  Tue, 05 Apr 2011 15:37:44 +0200
+
 hello (2.6-1) unstable; urgency=low
 
   * New upstream release.

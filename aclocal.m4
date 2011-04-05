@@ -13,8 +13,8 @@
 
 m4_ifndef([AC_AUTOCONF_VERSION],
   [m4_copy([m4_PACKAGE_VERSION], [AC_AUTOCONF_VERSION])])dnl
-m4_if(m4_defn([AC_AUTOCONF_VERSION]), [2.65],,
-[m4_warning([this file was generated for autoconf 2.65.
+m4_if(m4_defn([AC_AUTOCONF_VERSION]), [2.68],,
+[m4_warning([this file was generated for autoconf 2.68.
 You have another version of autoconf.  It may work, but is not guaranteed to.
 If you have problems, you may need to regenerate the build system entirely.
 To do so, use the procedure documented by the package, typically `autoreconf'.])])
@@ -953,9 +953,9 @@ m4_include([gnulib/m4/00gnulib.m4])
 m4_include([gnulib/m4/close-stream.m4])
 m4_include([gnulib/m4/closeout.m4])
 m4_include([gnulib/m4/codeset.m4])
+m4_include([gnulib/m4/configmake.m4])
 m4_include([gnulib/m4/errno_h.m4])
 m4_include([gnulib/m4/error.m4])
-m4_include([gnulib/m4/exitfail.m4])
 m4_include([gnulib/m4/extensions.m4])
 m4_include([gnulib/m4/fcntl-o.m4])
 m4_include([gnulib/m4/fpending.m4])
@@ -975,25 +975,21 @@ m4_include([gnulib/m4/localcharset.m4])
 m4_include([gnulib/m4/locale-fr.m4])
 m4_include([gnulib/m4/locale-ja.m4])
 m4_include([gnulib/m4/locale-zh.m4])
-m4_include([gnulib/m4/longlong.m4])
 m4_include([gnulib/m4/mbrtowc.m4])
 m4_include([gnulib/m4/mbsinit.m4])
 m4_include([gnulib/m4/mbstate_t.m4])
-m4_include([gnulib/m4/multiarch.m4])
 m4_include([gnulib/m4/nls.m4])
 m4_include([gnulib/m4/po.m4])
 m4_include([gnulib/m4/progtest.m4])
 m4_include([gnulib/m4/quotearg.m4])
 m4_include([gnulib/m4/stdbool.m4])
 m4_include([gnulib/m4/stddef_h.m4])
-m4_include([gnulib/m4/stdint.m4])
-m4_include([gnulib/m4/stdlib_h.m4])
 m4_include([gnulib/m4/strerror.m4])
 m4_include([gnulib/m4/string_h.m4])
 m4_include([gnulib/m4/unistd_h.m4])
 m4_include([gnulib/m4/warn-on-use.m4])
-m4_include([gnulib/m4/wchar.m4])
+m4_include([gnulib/m4/wchar_h.m4])
 m4_include([gnulib/m4/wchar_t.m4])
-m4_include([gnulib/m4/wctype.m4])
+m4_include([gnulib/m4/wctype_h.m4])
 m4_include([gnulib/m4/wint_t.m4])
 m4_include([gnulib/m4/xalloc.m4])

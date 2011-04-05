@@ -1,3 +1,16 @@
+2011-03-22  Karl Berry  <karl@gnu.org>
+
+	* hello.texi: 2011.
+	(Overview): gnulib Introduction rather than Gnulib, etc.
+
+2010-12-31  Karl Berry  <karl@gnu.org>
+
+	* hello.texi (Top): Don't use @insertcopying, per rms.
+
+2010-04-08  Karl Berry  <karl@gnu.org>
+
+	* hello.texi (Top): No need to repeat what the manual is.
+
 2010-04-05  Karl Berry  <karl@gnu.org>
 
 	* hello.texi (Overview): mention srclist-update.

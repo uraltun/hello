@@ -16,9 +16,6 @@ STRIP = true
 ifeq (,$(findstring noopt,$(DEB_BUILD_OPTIONS)))
   CFLAGS += -O2
 endif
-ifeq (,$(findstring nostrip,$(DEB_BUILD_OPTIONS)))
-  STRIP = strip --remove-section=.comment --remove-section=.note
-endif
 
 export DEB_HOST_GNU_TYPE  ?= $(shell dpkg-architecture -qDEB_HOST_GNU_TYPE)
 export DEB_BUILD_GNU_TYPE ?= $(shell dpkg-architecture -qDEB_BUILD_GNU_TYPE)
@@ -26,8 +23,14 @@ export DEB_BUILD_GNU_TYPE ?= $(shell dpkg-architecture -qDEB_BUILD_GNU_TYPE)
 # Recommended snippet for Autoconf 2.52 or later
 ifeq ($(DEB_BUILD_GNU_TYPE), $(DEB_HOST_GNU_TYPE))
   confflags += --build $(DEB_HOST_GNU_TYPE)
+  stripcmd = strip
 else
   confflags += --build $(DEB_BUILD_GNU_TYPE) --host $(DEB_HOST_GNU_TYPE)
+  stripcmd = $(DEB_HOST_GNU_TYPE)-strip
+endif
+
+ifeq (,$(findstring nostrip,$(DEB_BUILD_OPTIONS)))
+  STRIP = $(stripcmd) --remove-section=.comment --remove-section=.note
 endif
 
 build:
@@ -58,7 +61,7 @@ binary-arch: build
 	gzip -9 debian/tmp/usr/share/info/*
 	dpkg-shlibdeps debian/tmp/usr/bin/hello
 	dpkg-gencontrol
-	chown -R root:root debian/tmp
+	chown -R 0:0 debian/tmp
 	chmod -R u+w,go=rX debian/tmp
 	dpkg --build debian/tmp ..
 
