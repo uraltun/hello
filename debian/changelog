@@ -1,3 +1,10 @@
+hello (2.7-2) unstable; urgency=low
+
+  * Added recommended targets build-arch and build-indep.
+  * Standards-Version: 3.9.2.
+
+ -- Santiago Vila <sanvila@debian.org>  Thu, 04 Aug 2011 13:08:08 +0200
+
 hello (2.7-1) unstable; urgency=low
 
   * New upstream release.
