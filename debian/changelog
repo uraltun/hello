@@ -1,3 +1,11 @@
+hello (2.7-3) unstable; urgency=low
+
+  * Get CFLAGS from dpkg-buildflags.
+  * Drop -g as it's provided by dpkg-buildflags. Add -Wall as it's not.
+  * Drop noopt handling, dpkg-buildflags already takes care of that.
+
+ -- Santiago Vila <sanvila@debian.org>  Sun, 26 Feb 2012 12:04:16 +0100
+
 hello (2.7-2) unstable; urgency=low
 
   * Added recommended targets build-arch and build-indep.
