@@ -19,6 +19,6 @@ TESTS = greeting-1 greeting-2 hello-1 last-1 traditional-1
 
 EXTRA_DIST = $(TESTS)
 
-TESTS_ENVIRONMENT = top_srcdir=$(top_srcdir) PATH=.:../src:$$PATH \
+TESTS_ENVIRONMENT = top_srcdir=$(top_srcdir) PATH=.$(PATH_SEPARATOR)../src$(PATH_SEPARATOR)$$PATH \
 		    HELLO=`echo hello|sed '$(transform)'` \
 		    $(SHELL)

@@ -15,8 +15,7 @@
 This manual is for GNU Hello (version @value{VERSION}, @value{UPDATED}),
 which prints a friendly greeting (and serves as an example GNU package).
 
-Copyright @copyright{} 1992, 1993, 1996, 2002, 2005, 2006, 2007, 2008,
-2009, 2010, 2011 Free Software Foundation, Inc.
+Copyright @copyright{} 1992, 1993, 1996, 2002, 2005-2012 Free Software Foundation, Inc.
 
 @quotation
 Permission is granted to copy, distribute and/or modify this document
@@ -143,7 +142,7 @@ HTML, PDF, DVI, plain text, XML, and other formats.
 
 @end itemize
 
-GNU Hello is implemented in C.  The GNU Gettext distribution contains
+GNU Hello is implemented in C@.  The GNU Gettext distribution contains
 ``hello world'' examples in many other programming languages; see the
 Gettext home page at @url{http://www.gnu.org/software/gettext/}.
 
@@ -242,6 +241,7 @@ Print an informative help message on standard output and exit
 successfully.
 
 @cindex environment variables, help for
+@c This comment prevents `make syntax-check' from diagnosing a doubled word "for\nFor"
 For the @option{--help} output of GNU programs, it's strongly
 encouraged to include a brief (one or two sentences) description of
 what the program does, as well as the synopsis of how to run the
@@ -286,8 +286,8 @@ comes last takes precedence.
 @cindex problems
 @cindex reporting bugs
 
-To report bugs or suggest enhancements for GNU Hello, please
-send electronic mail to @email{bug-hello@@gnu.org}.
+To report bugs, suggest enhancements or otherwise discuss GNU Hello,
+please send electronic mail to @email{bug-hello@@gnu.org}.
 
 @cindex checklist for bug reports
 For bug reports, please include enough information for the maintainers

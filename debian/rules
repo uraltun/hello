@@ -10,11 +10,16 @@
 package = hello
 docdir = debian/tmp/usr/share/doc/$(package)
 
-CFLAGS = $(shell dpkg-buildflags --get CFLAGS) -Wall
+CFLAGS := $(shell dpkg-buildflags --get CFLAGS) -Wall
+LDFLAGS := `dpkg-buildflags --get LDFLAGS`
+CPPFLAGS := `dpkg-buildflags --get CPPFLAGS`
+
 STRIP = true
 
 export DEB_HOST_GNU_TYPE  ?= $(shell dpkg-architecture -qDEB_HOST_GNU_TYPE)
 export DEB_BUILD_GNU_TYPE ?= $(shell dpkg-architecture -qDEB_BUILD_GNU_TYPE)
+
+export AM_UPDATE_INFO_DIR = no
 
 # Recommended snippet for Autoconf 2.52 or later
 ifeq ($(DEB_BUILD_GNU_TYPE), $(DEB_HOST_GNU_TYPE))
@@ -30,8 +35,9 @@ ifeq (,$(findstring nostrip,$(DEB_BUILD_OPTIONS)))
 endif
 
 build:
-	./configure $(confflags) --prefix=/usr
-	$(MAKE) CFLAGS="$(CFLAGS)"
+	./configure CFLAGS="$(CFLAGS)" CPPFLAGS="$(CPPFLAGS)" \
+		LDFLAGS="$(LDFLAGS)" $(confflags) --prefix=/usr
+	$(MAKE)
 	touch build
 
 clean:

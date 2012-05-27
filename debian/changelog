@@ -1,3 +1,13 @@
+hello (2.8-1) unstable; urgency=low
+
+  * New upstream release.
+  * Dropped patch 01-no-usr-share-info-dir-gz in favour of new environment
+    variable AM_UPDATE_INFO_DIR supported by recent automake.
+  * Build with hardened flags (added CPPFLAGS and LDFLAGS).
+  * Put CFLAGS stuff in ./configure call, where they really belong.
+
+ -- Santiago Vila <sanvila@debian.org>  Sun, 27 May 2012 23:23:00 +0200
+
 hello (2.7-3) unstable; urgency=low
 
   * Get CFLAGS from dpkg-buildflags.
