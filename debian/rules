@@ -10,7 +10,7 @@
 package = hello
 docdir = debian/tmp/usr/share/doc/$(package)
 
-CFLAGS := $(shell dpkg-buildflags --get CFLAGS) -Wall
+CFLAGS := `dpkg-buildflags --get CFLAGS` -Wall
 LDFLAGS := `dpkg-buildflags --get LDFLAGS`
 CPPFLAGS := `dpkg-buildflags --get CPPFLAGS`
 
