@@ -1,3 +1,10 @@
+hello (2.8-3) unstable; urgency=low
+
+  * Quote prefix in make install to fix FTBFS when there are spaces
+    in the working directory. Closes: #696855. Thanks to Dmitrijs Ledkovs.
+
+ -- Santiago Vila <sanvila@debian.org>  Wed, 13 Feb 2013 11:24:42 +0100
+
 hello (2.8-2) unstable; urgency=low
 
   * Use `dpkg-buildflags` instead of $(shell dpkg-buildflags).
