@@ -1,3 +1,11 @@
+hello (2.8-4) unstable; urgency=low
+
+  * Added '-n' to all debian/rules gzip calls to help the build to be
+    binary-reproducible. Closes: #719848.
+  * Updated config.guess and config.sub.
+
+ -- Santiago Vila <sanvila@debian.org>  Fri, 16 Aug 2013 09:50:00 +0200
+
 hello (2.8-3) unstable; urgency=low
 
   * Quote prefix in make install to fix FTBFS when there are spaces
