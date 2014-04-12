@@ -1,9 +1,9 @@
 This is hello.info, produced by makeinfo version 4.13 from hello.texi.
 
-This manual is for GNU Hello (version 2.8, 19 April 2012), which prints
-a friendly greeting (and serves as an example GNU package).
+This manual is for GNU Hello (version 2.9, 10 October 2013), which
+prints a friendly greeting (and serves as an example GNU package).
 
-   Copyright (C) 1992, 1993, 1996, 2002, 2005-2012 Free Software
+   Copyright (C) 1992, 1993, 1996, 2002, 2005-2013 Free Software
 Foundation, Inc.
 
      Permission is granted to copy, distribute and/or modify this
@@ -24,8 +24,8 @@ File: hello.info,  Node: Top,  Next: Overview,  Up: (dir)
 GNU Hello
 *********
 
-This manual is for GNU Hello (version 2.8, 19 April 2012), which prints
-a friendly greeting (and serves as an example GNU package).
+This manual is for GNU Hello (version 2.9, 10 October 2013), which
+prints a friendly greeting (and serves as an example GNU package).
 
 * Menu:
 
@@ -163,10 +163,10 @@ The format for running the `hello' program is:
 
 `--next-generation'
 `-n'
-     Output `Hello, world!', but possibly including box-drawing
-     characters or other fancy stuff, especially in translated locales.
-     (If you would like to volunteer to translate messages for GNU
-     packages, please see `http://translationproject.org'.)
+     Output the greeting, but possibly including box-drawing characters
+     or other fancy stuff, especially in translated locales.  (If you
+     would like to volunteer to translate messages for GNU packages,
+     please see `http://translationproject.org'.)
 
 `--traditional'
 `-t'
@@ -769,12 +769,12 @@ Concept index
 
 
 Tag Table:
-Node: Top813
-Node: Overview1346
-Node: Sample output4544
-Node: Invoking hello4932
-Node: Reporting bugs6412
-Node: GNU Free Documentation License7703
-Node: Concept index32878
+Node: Top815
+Node: Overview1350
+Node: Sample output4548
+Node: Invoking hello4936
+Node: Reporting bugs6414
+Node: GNU Free Documentation License7705
+Node: Concept index32880
 
 End Tag Table
