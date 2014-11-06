@@ -1,3 +1,17 @@
+hello (2.9-2) unstable; urgency=low
+
+  * Apply patch from Reuben Thomas to fix i18n of default message.
+    This is upstream commit c4aed00. Closes: #767172.
+  * The previous change in src/hello.c trigger a rebuild of man/hello.1
+    that we don't need. Add a "touch man/hello.1" to avoid it.
+  * Use Breaks: hello-debhelper (<< 2.9), not Conflicts,
+    as hello-debhelper is deprecated.
+  * Restore simple watch file from old hello package that was lost
+    when the packages were renamed.
+  * Update 99-config-guess-config-sub patch.
+
+ -- Santiago Vila <sanvila@debian.org>  Thu, 06 Nov 2014 12:03:40 +0100
+
 hello (2.9-1) unstable; urgency=low
 
   * New upstream release. Closes: #744195.

@@ -9,10 +9,10 @@ Subject: Updated config.guess and config.sub
 -#   Copyright (C) 1992, 1993, 1994, 1995, 1996, 1997, 1998, 1999,
 -#   2000, 2001, 2002, 2003, 2004, 2005, 2006, 2007, 2008, 2009, 2010,
 -#   2011, 2012, 2013 Free Software Foundation, Inc.
-+#   Copyright 1992-2013 Free Software Foundation, Inc.
++#   Copyright 1992-2014 Free Software Foundation, Inc.
  
 -timestamp='2012-12-30'
-+timestamp='2013-06-10'
++timestamp='2014-03-23'
  
  # This file is free software; you can redistribute it and/or modify it
  # under the terms of the GNU General Public License as published by
@@ -23,7 +23,7 @@ Subject: Updated config.guess and config.sub
 -Copyright (C) 1992, 1993, 1994, 1995, 1996, 1997, 1998, 1999, 2000,
 -2001, 2002, 2003, 2004, 2005, 2006, 2007, 2008, 2009, 2010, 2011,
 -2012, 2013 Free Software Foundation, Inc.
-+Copyright 1992-2013 Free Software Foundation, Inc.
++Copyright 1992-2014 Free Software Foundation, Inc.
  
  This is free software; see the source for copying conditions.  There is NO
  warranty; not even for MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE."
@@ -48,13 +48,22 @@ Subject: Updated config.guess and config.sub
 +	LIBC=gnu
 +	#endif
 +	EOF
-+	eval `$CC_FOR_BUILD -E $dummy.c 2>/dev/null | grep '^LIBC'`
++	eval `$CC_FOR_BUILD -E $dummy.c 2>/dev/null | grep '^LIBC' | sed 's, ,,g'`
 +	;;
 +esac
 +
  # Note: order is significant - the case branches are not exclusive.
  
  case "${UNAME_MACHINE}:${UNAME_SYSTEM}:${UNAME_RELEASE}:${UNAME_VERSION}" in
+@@ -809,7 +826,7 @@
+     *:MINGW*:*)
+ 	echo ${UNAME_MACHINE}-pc-mingw32
+ 	exit ;;
+-    i*:MSYS*:*)
++    *:MSYS*:*)
+ 	echo ${UNAME_MACHINE}-pc-msys
+ 	exit ;;
+     i*:windows32*:*)
 @@ -857,21 +874,21 @@
  	exit ;;
      *:GNU:*:*)
@@ -165,11 +174,12 @@ Subject: Updated config.guess and config.sub
 -	test x"${CPU}" != x && { echo "${CPU}-unknown-linux-gnu"; exit; }
 +	test x"${CPU}" != x && { echo "${CPU}-unknown-linux-${LIBC}"; exit; }
  	;;
-+    or1k:Linux:*:*)
-+	echo ${UNAME_MACHINE}-unknown-linux-${LIBC}
-+	exit ;;
-     or32:Linux:*:*)
+-    or32:Linux:*:*)
 -	echo ${UNAME_MACHINE}-unknown-linux-gnu
++    openrisc*:Linux:*:*)
++	echo or1k-unknown-linux-${LIBC}
++	exit ;;
++    or32:Linux:*:* | or1k*:Linux:*:*)
 +	echo ${UNAME_MACHINE}-unknown-linux-${LIBC}
  	exit ;;
      padre:Linux:*:*)
@@ -239,7 +249,7 @@ Subject: Updated config.guess and config.sub
  	exit ;;
      i*86:DYNIX/ptx:4*:*)
  	# ptx 4.0 does uname -s correctly, with DYNIX/ptx in there.
-@@ -1235,19 +1256,21 @@
+@@ -1235,19 +1256,31 @@
  	exit ;;
      *:Darwin:*:*)
  	UNAME_PROCESSOR=`uname -p` || UNAME_PROCESSOR=unknown
@@ -260,20 +270,185 @@ Subject: Updated config.guess and config.sub
 +	if test "$UNAME_PROCESSOR" = unknown ; then
 +	    UNAME_PROCESSOR=powerpc
 +	fi
-+	if [ "$CC_FOR_BUILD" != 'no_compiler_found' ]; then
-+	    if (echo '#ifdef __LP64__'; echo IS_64BIT_ARCH; echo '#endif') | \
-+		(CCOPTS= $CC_FOR_BUILD -E - 2>/dev/null) | \
-+		grep IS_64BIT_ARCH >/dev/null
-+	    then
-+		case $UNAME_PROCESSOR in
-+		    i386) UNAME_PROCESSOR=x86_64 ;;
-+		    powerpc) UNAME_PROCESSOR=powerpc64 ;;
-+		esac
++	if test `echo "$UNAME_RELEASE" | sed -e 's/\..*//'` -le 10 ; then
++	    if [ "$CC_FOR_BUILD" != 'no_compiler_found' ]; then
++		if (echo '#ifdef __LP64__'; echo IS_64BIT_ARCH; echo '#endif') | \
++		    (CCOPTS= $CC_FOR_BUILD -E - 2>/dev/null) | \
++		    grep IS_64BIT_ARCH >/dev/null
++		then
++		    case $UNAME_PROCESSOR in
++			i386) UNAME_PROCESSOR=x86_64 ;;
++			powerpc) UNAME_PROCESSOR=powerpc64 ;;
++		    esac
++		fi
 +	    fi
++	elif test "$UNAME_PROCESSOR" = i386 ; then
++	    # Avoid executing cc on OS X 10.9, as it ships with a stub
++	    # that puts up a graphical alert prompting to install
++	    # developer tools.  Any system running Mac OS X 10.7 or
++	    # later (Darwin 11 and later) is required to have a 64-bit
++	    # processor. This is not true of the ARM version of Darwin
++	    # that Apple uses in portable devices.
++	    UNAME_PROCESSOR=x86_64
 +	fi
  	echo ${UNAME_PROCESSOR}-apple-darwin${UNAME_RELEASE}
  	exit ;;
      *:procnto*:*:* | *:QNX:[0123456789]*:*)
+@@ -1338,154 +1371,6 @@
+ 	exit ;;
+ esac
+ 
+-eval $set_cc_for_build
+-cat >$dummy.c <<EOF
+-#ifdef _SEQUENT_
+-# include <sys/types.h>
+-# include <sys/utsname.h>
+-#endif
+-main ()
+-{
+-#if defined (sony)
+-#if defined (MIPSEB)
+-  /* BFD wants "bsd" instead of "newsos".  Perhaps BFD should be changed,
+-     I don't know....  */
+-  printf ("mips-sony-bsd\n"); exit (0);
+-#else
+-#include <sys/param.h>
+-  printf ("m68k-sony-newsos%s\n",
+-#ifdef NEWSOS4
+-	"4"
+-#else
+-	""
+-#endif
+-	); exit (0);
+-#endif
+-#endif
+-
+-#if defined (__arm) && defined (__acorn) && defined (__unix)
+-  printf ("arm-acorn-riscix\n"); exit (0);
+-#endif
+-
+-#if defined (hp300) && !defined (hpux)
+-  printf ("m68k-hp-bsd\n"); exit (0);
+-#endif
+-
+-#if defined (NeXT)
+-#if !defined (__ARCHITECTURE__)
+-#define __ARCHITECTURE__ "m68k"
+-#endif
+-  int version;
+-  version=`(hostinfo | sed -n 's/.*NeXT Mach \([0-9]*\).*/\1/p') 2>/dev/null`;
+-  if (version < 4)
+-    printf ("%s-next-nextstep%d\n", __ARCHITECTURE__, version);
+-  else
+-    printf ("%s-next-openstep%d\n", __ARCHITECTURE__, version);
+-  exit (0);
+-#endif
+-
+-#if defined (MULTIMAX) || defined (n16)
+-#if defined (UMAXV)
+-  printf ("ns32k-encore-sysv\n"); exit (0);
+-#else
+-#if defined (CMU)
+-  printf ("ns32k-encore-mach\n"); exit (0);
+-#else
+-  printf ("ns32k-encore-bsd\n"); exit (0);
+-#endif
+-#endif
+-#endif
+-
+-#if defined (__386BSD__)
+-  printf ("i386-pc-bsd\n"); exit (0);
+-#endif
+-
+-#if defined (sequent)
+-#if defined (i386)
+-  printf ("i386-sequent-dynix\n"); exit (0);
+-#endif
+-#if defined (ns32000)
+-  printf ("ns32k-sequent-dynix\n"); exit (0);
+-#endif
+-#endif
+-
+-#if defined (_SEQUENT_)
+-    struct utsname un;
+-
+-    uname(&un);
+-
+-    if (strncmp(un.version, "V2", 2) == 0) {
+-	printf ("i386-sequent-ptx2\n"); exit (0);
+-    }
+-    if (strncmp(un.version, "V1", 2) == 0) { /* XXX is V1 correct? */
+-	printf ("i386-sequent-ptx1\n"); exit (0);
+-    }
+-    printf ("i386-sequent-ptx\n"); exit (0);
+-
+-#endif
+-
+-#if defined (vax)
+-# if !defined (ultrix)
+-#  include <sys/param.h>
+-#  if defined (BSD)
+-#   if BSD == 43
+-      printf ("vax-dec-bsd4.3\n"); exit (0);
+-#   else
+-#    if BSD == 199006
+-      printf ("vax-dec-bsd4.3reno\n"); exit (0);
+-#    else
+-      printf ("vax-dec-bsd\n"); exit (0);
+-#    endif
+-#   endif
+-#  else
+-    printf ("vax-dec-bsd\n"); exit (0);
+-#  endif
+-# else
+-    printf ("vax-dec-ultrix\n"); exit (0);
+-# endif
+-#endif
+-
+-#if defined (alliant) && defined (i860)
+-  printf ("i860-alliant-bsd\n"); exit (0);
+-#endif
+-
+-  exit (1);
+-}
+-EOF
+-
+-$CC_FOR_BUILD -o $dummy $dummy.c 2>/dev/null && SYSTEM_NAME=`$dummy` &&
+-	{ echo "$SYSTEM_NAME"; exit; }
+-
+-# Apollos put the system type in the environment.
+-
+-test -d /usr/apollo && { echo ${ISP}-apollo-${SYSTYPE}; exit; }
+-
+-# Convex versions that predate uname can use getsysinfo(1)
+-
+-if [ -x /usr/convex/getsysinfo ]
+-then
+-    case `getsysinfo -f cpu_type` in
+-    c1*)
+-	echo c1-convex-bsd
+-	exit ;;
+-    c2*)
+-	if getsysinfo -f scalar_acc
+-	then echo c32-convex-bsd
+-	else echo c2-convex-bsd
+-	fi
+-	exit ;;
+-    c34*)
+-	echo c34-convex-bsd
+-	exit ;;
+-    c38*)
+-	echo c38-convex-bsd
+-	exit ;;
+-    c4*)
+-	echo c4-convex-bsd
+-	exit ;;
+-    esac
+-fi
+-
+ cat >&2 <<EOF
+ $0: unable to guess system type
+ 
 --- a/build-aux/config.sub
 +++ b/build-aux/config.sub
 @@ -1,10 +1,8 @@
@@ -282,10 +457,10 @@ Subject: Updated config.guess and config.sub
 -#   Copyright (C) 1992, 1993, 1994, 1995, 1996, 1997, 1998, 1999,
 -#   2000, 2001, 2002, 2003, 2004, 2005, 2006, 2007, 2008, 2009, 2010,
 -#   2011, 2012, 2013 Free Software Foundation, Inc.
-+#   Copyright 1992-2013 Free Software Foundation, Inc.
++#   Copyright 1992-2014 Free Software Foundation, Inc.
  
 -timestamp='2013-01-04'
-+timestamp='2013-08-10'
++timestamp='2014-09-26'
  
  # This file is free software; you can redistribute it and/or modify it
  # under the terms of the GNU General Public License as published by
@@ -296,7 +471,7 @@ Subject: Updated config.guess and config.sub
 -Copyright (C) 1992, 1993, 1994, 1995, 1996, 1997, 1998, 1999, 2000,
 -2001, 2002, 2003, 2004, 2005, 2006, 2007, 2008, 2009, 2010, 2011,
 -2012, 2013 Free Software Foundation, Inc.
-+Copyright 1992-2013 Free Software Foundation, Inc.
++Copyright 1992-2014 Free Software Foundation, Inc.
  
  This is free software; see the source for copying conditions.  There is NO
  warranty; not even for MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE."
@@ -315,8 +490,22 @@ Subject: Updated config.guess and config.sub
  	| d10v | d30v | dlx | dsp16xx \
  	| epiphany \
  	| fido | fr30 | frv \
-@@ -290,16 +286,17 @@
+@@ -269,6 +265,7 @@
+ 	| hexagon \
+ 	| i370 | i860 | i960 | ia64 \
+ 	| ip2k | iq2000 \
++	| k1om \
+ 	| le32 | le64 \
+ 	| lm32 \
+ 	| m32c | m32r | m32rle | m68000 | m68k | m88k \
+@@ -286,23 +283,26 @@
+ 	| mips64vr5900 | mips64vr5900el \
+ 	| mipsisa32 | mipsisa32el \
+ 	| mipsisa32r2 | mipsisa32r2el \
++	| mipsisa32r6 | mipsisa32r6el \
+ 	| mipsisa64 | mipsisa64el \
  	| mipsisa64r2 | mipsisa64r2el \
++	| mipsisa64r6 | mipsisa64r6el \
  	| mipsisa64sb1 | mipsisa64sb1el \
  	| mipsisa64sr71k | mipsisa64sr71kel \
 +	| mipsr5900 | mipsr5900el \
@@ -329,13 +518,29 @@ Subject: Updated config.guess and config.sub
 -	| nios | nios2 \
 +	| nios | nios2 | nios2eb | nios2el \
  	| ns16k | ns32k \
- 	| open8 \
+-	| open8 \
 -	| or32 \
-+	| or1k | or32 \
++	| open8 | or1k | or1knd | or32 \
  	| pdp10 | pdp11 | pj | pjl \
  	| powerpc | powerpc64 | powerpc64le | powerpcle \
  	| pyramid \
-@@ -369,13 +366,13 @@
++	| riscv32 | riscv64 \
+ 	| rl78 | rx \
+ 	| score \
+ 	| sh | sh[1234] | sh[24]a | sh[24]aeb | sh[23]e | sh[34]eb | sheb | shbe | shle | sh[1234]le | sh3ele \
+@@ -327,7 +327,10 @@
+ 	c6x)
+ 		basic_machine=tic6x-unknown
+ 		;;
+-	m6811 | m68hc11 | m6812 | m68hc12 | m68hcs12x | picochip)
++	leon|leon[3-9])
++		basic_machine=sparc-$basic_machine
++		;;
++	m6811 | m68hc11 | m6812 | m68hc12 | m68hcs12x | nvptx | picochip)
+ 		basic_machine=$basic_machine-unknown
+ 		os=-none
+ 		;;
+@@ -369,13 +372,13 @@
  	| aarch64-* | aarch64_be-* \
  	| alpha-* | alphaev[4-8]-* | alphaev56-* | alphaev6[78]-* \
  	| alpha64-* | alpha64ev[4-8]-* | alpha64ev56-* | alpha64ev6[78]-* \
@@ -351,8 +556,22 @@ Subject: Updated config.guess and config.sub
  	| d10v-* | d30v-* | dlx-* \
  	| elxsi-* \
  	| f30[01]-* | f700-* | fido-* | fr30-* | frv-* | fx80-* \
-@@ -407,12 +404,13 @@
+@@ -384,6 +387,7 @@
+ 	| hexagon-* \
+ 	| i*86-* | i860-* | i960-* | ia64-* \
+ 	| ip2k-* | iq2000-* \
++	| k1om-* \
+ 	| le32-* | le64-* \
+ 	| lm32-* \
+ 	| m32c-* | m32r-* | m32rle-* \
+@@ -403,18 +407,22 @@
+ 	| mips64vr5900-* | mips64vr5900el-* \
+ 	| mipsisa32-* | mipsisa32el-* \
+ 	| mipsisa32r2-* | mipsisa32r2el-* \
++	| mipsisa32r6-* | mipsisa32r6el-* \
+ 	| mipsisa64-* | mipsisa64el-* \
  	| mipsisa64r2-* | mipsisa64r2el-* \
++	| mipsisa64r6-* | mipsisa64r6el-* \
  	| mipsisa64sb1-* | mipsisa64sb1el-* \
  	| mipsisa64sr71k-* | mipsisa64sr71kel-* \
 +	| mipsr5900-* | mipsr5900el-* \
@@ -365,8 +584,21 @@ Subject: Updated config.guess and config.sub
 +	| nios-* | nios2-* | nios2eb-* | nios2el-* \
  	| none-* | np1-* | ns16k-* | ns32k-* \
  	| open8-* \
++	| or1k*-* \
  	| orion-* \
-@@ -796,7 +794,7 @@
+ 	| pdp10-* | pdp11-* | pj-* | pjl-* | pn-* | power-* \
+ 	| powerpc-* | powerpc64-* | powerpc64le-* | powerpcle-* \
+@@ -769,6 +777,9 @@
+ 		basic_machine=m68k-isi
+ 		os=-sysv
+ 		;;
++	leon-*|leon[3-9]-*)
++		basic_machine=sparc-`echo $basic_machine | sed 's/-.*//'`
++		;;
+ 	m68knommu)
+ 		basic_machine=m68k-unknown
+ 		os=-linux
+@@ -796,7 +807,7 @@
  		os=-mingw64
  		;;
  	mingw32)
@@ -375,7 +607,18 @@ Subject: Updated config.guess and config.sub
  		os=-mingw32
  		;;
  	mingw32ce)
-@@ -832,7 +830,7 @@
+@@ -824,6 +835,10 @@
+ 		basic_machine=powerpc-unknown
+ 		os=-morphos
+ 		;;
++	moxiebox)
++		basic_machine=moxie-unknown
++		os=-moxiebox
++		;;
+ 	msdos)
+ 		basic_machine=i386-pc
+ 		os=-msdos
+@@ -832,7 +847,7 @@
  		basic_machine=`echo $basic_machine | sed -e 's/ms1-/mt-/'`
  		;;
  	msys)
@@ -384,7 +627,24 @@ Subject: Updated config.guess and config.sub
  		os=-msys
  		;;
  	mvs)
-@@ -1548,6 +1546,9 @@
+@@ -1369,14 +1384,14 @@
+ 	      | -cygwin* | -msys* | -pe* | -psos* | -moss* | -proelf* | -rtems* \
+ 	      | -mingw32* | -mingw64* | -linux-gnu* | -linux-android* \
+ 	      | -linux-newlib* | -linux-musl* | -linux-uclibc* \
+-	      | -uxpv* | -beos* | -mpeix* | -udk* \
++	      | -uxpv* | -beos* | -mpeix* | -udk* | -moxiebox* \
+ 	      | -interix* | -uwin* | -mks* | -rhapsody* | -darwin* | -opened* \
+ 	      | -openstep* | -oskit* | -conix* | -pw32* | -nonstopux* \
+ 	      | -storm-chaos* | -tops10* | -tenex* | -tops20* | -its* \
+ 	      | -os2* | -vos* | -palmos* | -uclinux* | -nucleus* \
+ 	      | -morphos* | -superux* | -rtmk* | -rtmk-nova* | -windiss* \
+ 	      | -powermax* | -dnix* | -nx6 | -nx7 | -sei* | -dragonfly* \
+-	      | -skyos* | -haiku* | -rdos* | -toppers* | -drops* | -es*)
++	      | -skyos* | -haiku* | -rdos* | -toppers* | -drops* | -es* | -tirtos*)
+ 	# Remember, each alternative MUST END IN *, to match a version number.
+ 		;;
+ 	-qnx*)
+@@ -1548,6 +1563,9 @@
  	c4x-* | tic4x-*)
  		os=-coff
  		;;
@@ -393,14 +653,4 @@ Subject: Updated config.guess and config.sub
 +		;;
  	hexagon-*)
  		os=-elf
- 		;;
-@@ -1591,6 +1592,9 @@
- 	mips*-*)
- 		os=-elf
- 		;;
-+	or1k-*)
-+		os=-elf
-+		;;
- 	or32-*)
- 		os=-coff
  		;;
