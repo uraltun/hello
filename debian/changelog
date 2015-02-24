@@ -1,3 +1,10 @@
+hello (2.9-2+deb8u1) jessie-security; urgency=low
+
+  * Non-maintainer upload by the security team.
+  * No-change test upload to jessie-security.
+
+ -- Thijs Kinkhorst <thijs@debian.org>  Tue, 24 Feb 2015 21:35:08 +0100
+
 hello (2.9-2) unstable; urgency=low
 
   * Apply patch from Reuben Thomas to fix i18n of default message.
