@@ -2,8 +2,8 @@
 # and all subdirectories).
 # Makefile for the top-level directory of GNU hello.
 #
-# Copyright 1997, 1998, 2005, 2006, 2007, 2008, 2009, 2010, 2011
-# Free Software Foundation, Inc.
+# Copyright 1997, 1998, 2005, 2006, 2007, 2008, 2009, 2010, 2011, 2013,
+# 2014 Free Software Foundation, Inc.
 #
 # This program is free software; you can redistribute it and/or modify
 # it under the terms of the GNU General Public License as published by
@@ -21,11 +21,65 @@
 # Find gnulib headers.
 ACLOCAL_AMFLAGS = -I m4
 
+AM_CPPFLAGS = -Ilib -I$(top_srcdir)/lib -Isrc -I$(top_srcdir)/src
+
 # Additional files to distribute.
-EXTRA_DIST = README-dev ChangeLog.O m4/gnulib-cache.m4
+EXTRA_DIST = \
+	README-dev \
+	ChangeLog.O \
+	m4/gnulib-cache.m4 \
+	man/hello.x \
+	contrib/de_franconian_po.txt \
+	contrib/evolution.txt
 
 # Subdirectories to descend into.
-SUBDIRS = contrib lib po src doc man tests
+SUBDIRS = po
+
+bin_PROGRAMS = hello
+hello_SOURCES = src/hello.c src/system.h
+
+hello_LDADD = $(LIBINTL) $(top_builddir)/lib/lib$(PACKAGE).a
+
+localedir = $(datadir)/locale
+DEFS = -DLOCALEDIR=\"$(localedir)\" @DEFS@
+
+CLEANFILES =
+
+if !GIT_CROSS_COMPILING
+man_MANS = hello.1
+EXTRA_DIST += $(man_MANS)
+endif
+
+if BUILD_FROM_GIT
+hello.1: hello
+	$(HELP2MAN) --include=$(top_srcdir)/man/hello.x $(top_builddir)/hello -o $@-t
+	chmod a=r $@-t
+	mv -f $@-t $@
+
+CLEANFILES += $(man_MANS)
+endif
+
+TESTS = \
+	tests/greeting-1 \
+	tests/greeting-2 \
+	tests/hello-1 \
+	tests/last-1 \
+	tests/traditional-1
+
+EXTRA_DIST += $(TESTS)
+
+noinst_LIBRARIES =
+MOSTLYCLEANFILES =
+MOSTLYCLEANDIRS =
+BUILT_SOURCES =
+
+LOG_COMPILER = $(SHELL)
+
+TESTS_ENVIRONMENT = \
+  top_srcdir=$(top_srcdir) \
+  PATH=.$(PATH_SEPARATOR)$(PATH_SEPARATOR)$$PATH \
+  HELLO=`echo hello | sed '$(transform)'`; \
+  export HELLO PATH top_srcdir;
 
 # Verify that all source files using _() are listed in po/POTFILES.in.
 # The idea is to run this before making pretests, as well as official
@@ -38,7 +92,7 @@ po-check:
 	  files=;							\
 	  for file in $$($(CVS_LIST_EXCEPT)) `find * -name '*.[ch]'`; do \
 	    case $$file in						\
-	    djgpp/* | man/*) continue;;					\
+	    gnulib/* | man/*) continue;;				\
 	    esac;							\
 	    case $$file in						\
 	    *.[ch])							\
@@ -62,7 +116,7 @@ gendocs = build-aux/gendocs.sh
 gendocs_envvars = GENDOCS_TEMPLATE_DIR=doc
 #
 manual = hello
-manual_title = "Hello, GNU World"
+manual_title=Hello, GNU World
 email = $(PACKAGE_BUGREPORT)
 gendocs_args = --email $(email) $(manual) $(manual_title)
 #
@@ -77,3 +131,22 @@ wwwdoc:
 	cp -arf $(doctemp)/manual/. $(www_target)
 	ls -ltu $(www_target)/html_node | tail  # $VCS rm -f obsolete files
 # followed by $VCS add of new files and cvs commit.
+
+include $(top_srcdir)/lib/local.mk
+include $(top_srcdir)/doc/local.mk
+
+dist-hook: gen-ChangeLog
+
+gen_start_date = 2011-12-17
+.PHONY: gen-ChangeLog
+gen-ChangeLog:
+	$(AM_V_GEN)if test -d .git; then				\
+	  log_fix="$(srcdir)/build-aux/git-log-fix";			\
+	  test -e "$$log_fix"						\
+	    && amend_git_log="--amend=$$log_fix"			\
+	    || amend_git_log=;						\
+	  $(top_srcdir)/build-aux/gitlog-to-changelog			\
+	    $$amend_git_log --since=$(gen_start_date) > $(distdir)/cl-t && \
+	    { rm -f $(distdir)/ChangeLog &&				\
+	      mv $(distdir)/cl-t $(distdir)/ChangeLog; }		\
+	fi

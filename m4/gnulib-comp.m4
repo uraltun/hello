@@ -1,5 +1,5 @@
 # DO NOT EDIT! GENERATED AUTOMATICALLY!
-# Copyright (C) 2002-2013 Free Software Foundation, Inc.
+# Copyright (C) 2002-2014 Free Software Foundation, Inc.
 #
 # This file is free software; you can redistribute it and/or modify
 # it under the terms of the GNU General Public License as published by
@@ -38,6 +38,7 @@ AC_DEFUN([gl_EARLY],
   m4_pattern_allow([^gl_LIBOBJS$])dnl a variable
   m4_pattern_allow([^gl_LTLIBOBJS$])dnl a variable
   AC_REQUIRE([gl_PROG_AR_RANLIB])
+  # Code from module absolute-header:
   # Code from module announce-gen:
   # Code from module c-ctype:
   # Code from module c-strcase:
@@ -45,7 +46,11 @@ AC_DEFUN([gl_EARLY],
   # Code from module close-stream:
   # Code from module closeout:
   # Code from module configmake:
+  # Code from module dirname:
+  # Code from module dirname-lgpl:
   # Code from module do-release-commit-and-tag:
+  # Code from module dosname:
+  # Code from module double-slash-root:
   # Code from module errno:
   # Code from module error:
   # Code from module exitfail:
@@ -59,6 +64,7 @@ AC_DEFUN([gl_EARLY],
   # Code from module getopt-posix:
   # Code from module gettext:
   # Code from module gettext-h:
+  # Code from module gitlog-to-changelog:
   # Code from module gnu-web-doc-update:
   # Code from module gnumakefile:
   # Code from module gnupload:
@@ -67,6 +73,7 @@ AC_DEFUN([gl_EARLY],
   # Code from module intprops:
   # Code from module localcharset:
   # Code from module maintainer-makefile:
+  # Code from module malloc-posix:
   # Code from module mbrtowc:
   # Code from module mbsinit:
   # Code from module mbsrtowcs:
@@ -74,6 +81,7 @@ AC_DEFUN([gl_EARLY],
   # Code from module msvc-inval:
   # Code from module msvc-nothrow:
   # Code from module nocrash:
+  # Code from module non-recursive-gnulib-prefix-hack:
   # Code from module progname:
   # Code from module quotearg:
   # Code from module quotearg-simple:
@@ -85,14 +93,18 @@ AC_DEFUN([gl_EARLY],
   # Code from module ssize_t:
   # Code from module stdbool:
   # Code from module stddef:
+  # Code from module stdio:
   # Code from module stdlib:
   # Code from module streq:
   # Code from module strerror:
   # Code from module strerror-override:
   # Code from module string:
+  # Code from module strndup:
+  # Code from module strnlen:
   # Code from module strnlen1:
   # Code from module sys_types:
   # Code from module unistd:
+  # Code from module update-copyright:
   # Code from module useless-if-before-free:
   # Code from module vc-list-files:
   # Code from module verify:
@@ -101,6 +113,7 @@ AC_DEFUN([gl_EARLY],
   # Code from module xalloc:
   # Code from module xalloc-die:
   # Code from module xalloc-oversized:
+  # Code from module xstrndup:
 ])
 
 # This macro should be invoked from ./configure.ac, in the section
@@ -123,6 +136,10 @@ AC_DEFUN([gl_INIT],
   gl_MODULE_INDICATOR([close-stream])
   gl_CLOSEOUT
   gl_CONFIGMAKE_PREP
+  gl_DIRNAME
+  gl_MODULE_INDICATOR([dirname])
+  gl_DIRNAME_LGPL
+  gl_DOUBLE_SLASH_ROOT
   gl_HEADER_ERRNO_H
   gl_ERROR
   if test $ac_cv_lib_error_at_line = no; then
@@ -134,7 +151,7 @@ AC_DEFUN([gl_INIT],
      AM_][XGETTEXT_OPTION([--flag=error_at_line:5:c-format])])
   AC_REQUIRE([gl_EXTERN_INLINE])
   gl_FUNC_FPENDING
-  if test $ac_cv_func___fpending = no; then
+  if test $gl_cv_func___fpending = no; then
     AC_LIBOBJ([fpending])
     gl_PREREQ_FPENDING
   fi
@@ -176,6 +193,12 @@ AC_DEFUN([gl_INIT],
   AC_SUBST([LOCALCHARSET_TESTS_ENVIRONMENT])
   AC_CONFIG_COMMANDS_PRE([m4_ifdef([AH_HEADER],
     [AC_SUBST([CONFIG_INCLUDE], m4_defn([AH_HEADER]))])])
+  AC_REQUIRE([AC_PROG_SED])
+  gl_FUNC_MALLOC_POSIX
+  if test $REPLACE_MALLOC = 1; then
+    AC_LIBOBJ([malloc])
+  fi
+  gl_STDLIB_MODULE_INDICATOR([malloc-posix])
   gl_FUNC_MBRTOWC
   if test $HAVE_MBRTOWC = 0 || test $REPLACE_MBRTOWC = 1; then
     AC_LIBOBJ([mbrtowc])
@@ -209,12 +232,18 @@ AC_DEFUN([gl_INIT],
   if test $HAVE_MSVC_INVALID_PARAMETER_HANDLER = 1; then
     AC_LIBOBJ([msvc-nothrow])
   fi
+  dnl Run our hack near the end, just before config.status creation.
+  dnl It must happen late, i.e., after gl_LIBOBJS has been finalized.
+  AC_CONFIG_COMMANDS_PRE([
+    gl_NON_RECURSIVE_GNULIB_PREFIX_HACK([lib])
+    ])
   AC_CHECK_DECLS([program_invocation_name], [], [], [#include <errno.h>])
   AC_CHECK_DECLS([program_invocation_short_name], [], [], [#include <errno.h>])
   gl_QUOTEARG
   gt_TYPE_SSIZE_T
   AM_STDBOOL_H
   gl_STDDEF_H
+  gl_STDIO_H
   gl_STDLIB_H
   gl_FUNC_STRERROR
   if test $REPLACE_STRERROR = 1; then
@@ -229,12 +258,24 @@ AC_DEFUN([gl_INIT],
     gl_PREREQ_SYS_H_WINSOCK2
   fi
   gl_HEADER_STRING_H
+  gl_FUNC_STRNDUP
+  if test $HAVE_STRNDUP = 0 || test $REPLACE_STRNDUP = 1; then
+    AC_LIBOBJ([strndup])
+  fi
+  gl_STRING_MODULE_INDICATOR([strndup])
+  gl_FUNC_STRNLEN
+  if test $HAVE_DECL_STRNLEN = 0 || test $REPLACE_STRNLEN = 1; then
+    AC_LIBOBJ([strnlen])
+    gl_PREREQ_STRNLEN
+  fi
+  gl_STRING_MODULE_INDICATOR([strnlen])
   gl_SYS_TYPES_H
   AC_PROG_MKDIR_P
   gl_UNISTD_H
   gl_WCHAR_H
   gl_WCTYPE_H
   gl_XALLOC
+  gl_XSTRNDUP
   # End of code from modules
   m4_ifval(gl_LIBSOURCES_LIST, [
     m4_syscmd([test ! -d ]m4_defn([gl_LIBSOURCES_DIR])[ ||
@@ -379,16 +420,21 @@ AC_DEFUN([gl_FILE_LIST], [
   build-aux/config.rpath
   build-aux/do-release-commit-and-tag
   build-aux/gendocs.sh
+  build-aux/gitlog-to-changelog
   build-aux/gnu-web-doc-update
   build-aux/gnupload
+  build-aux/prefix-gnulib-mk
   build-aux/snippet/_Noreturn.h
   build-aux/snippet/arg-nonnull.h
   build-aux/snippet/c++defs.h
   build-aux/snippet/warn-on-use.h
+  build-aux/update-copyright
   build-aux/useless-if-before-free
   build-aux/vc-list-files
   doc/fdl.texi
   doc/gendocs_template
+  lib/basename-lgpl.c
+  lib/basename.c
   lib/c-ctype.c
   lib/c-ctype.h
   lib/c-strcase.h
@@ -400,6 +446,10 @@ AC_DEFUN([gl_FILE_LIST], [
   lib/closeout.c
   lib/closeout.h
   lib/config.charset
+  lib/dirname-lgpl.c
+  lib/dirname.c
+  lib/dirname.h
+  lib/dosname.h
   lib/errno.in.h
   lib/error.c
   lib/error.h
@@ -415,6 +465,7 @@ AC_DEFUN([gl_FILE_LIST], [
   lib/intprops.h
   lib/localcharset.c
   lib/localcharset.h
+  lib/malloc.c
   lib/mbrtowc.c
   lib/mbsinit.c
   lib/mbsrtowcs-impl.h
@@ -435,12 +486,16 @@ AC_DEFUN([gl_FILE_LIST], [
   lib/ref-del.sin
   lib/stdbool.in.h
   lib/stddef.in.h
+  lib/stdio.in.h
   lib/stdlib.in.h
   lib/streq.h
   lib/strerror-override.c
   lib/strerror-override.h
   lib/strerror.c
   lib/string.in.h
+  lib/stripslash.c
+  lib/strndup.c
+  lib/strnlen.c
   lib/strnlen1.c
   lib/strnlen1.h
   lib/sys_types.in.h
@@ -454,11 +509,16 @@ AC_DEFUN([gl_FILE_LIST], [
   lib/xalloc-oversized.h
   lib/xalloc.h
   lib/xmalloc.c
+  lib/xstrndup.c
+  lib/xstrndup.h
   m4/00gnulib.m4
+  m4/absolute-header.m4
   m4/close-stream.m4
   m4/closeout.m4
   m4/codeset.m4
   m4/configmake.m4
+  m4/dirname.m4
+  m4/double-slash-root.m4
   m4/errno_h.m4
   m4/error.m4
   m4/extensions.m4
@@ -489,6 +549,7 @@ AC_DEFUN([gl_FILE_LIST], [
   m4/locale-zh.m4
   m4/lock.m4
   m4/longlong.m4
+  m4/malloc.m4
   m4/mbrtowc.m4
   m4/mbsinit.m4
   m4/mbsrtowcs.m4
@@ -499,6 +560,7 @@ AC_DEFUN([gl_FILE_LIST], [
   m4/msvc-nothrow.m4
   m4/nls.m4
   m4/nocrash.m4
+  m4/non-recursive-gnulib-prefix-hack.m4
   m4/off_t.m4
   m4/po.m4
   m4/printf-posix.m4
@@ -509,9 +571,12 @@ AC_DEFUN([gl_FILE_LIST], [
   m4/stdbool.m4
   m4/stddef_h.m4
   m4/stdint_h.m4
+  m4/stdio_h.m4
   m4/stdlib_h.m4
   m4/strerror.m4
   m4/string_h.m4
+  m4/strndup.m4
+  m4/strnlen.m4
   m4/sys_socket_h.m4
   m4/sys_types_h.m4
   m4/threadlib.m4
@@ -525,6 +590,7 @@ AC_DEFUN([gl_FILE_LIST], [
   m4/wint_t.m4
   m4/xalloc.m4
   m4/xsize.m4
+  m4/xstrndup.m4
   top/GNUmakefile
   top/README-release
   top/maint.mk

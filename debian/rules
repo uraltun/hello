@@ -2,10 +2,6 @@
 %:
 	dh $@
 
-override_dh_auto_build:
-	touch man/hello.1
-	dh_auto_build
-
 override_dh_auto_clean:
 	[ ! -f Makefile ] || $(MAKE) distclean
 

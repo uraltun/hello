@@ -1,111 +1,108 @@
-# Norwegian messages for GNU hello.  (bokmål dialect)
+# Norwegian bokmÃ¥l translation of GNU Hello.
 # Copyright (C) 1996 Free Software Foundation, Inc.
+# This file is distributed under the same license as the hello package.
+# Ã…ka Sikrom <a4@hush.com>, 2014.
 # Eivind Tagseth <eivindt@multinet.no>, 1997, 2004.
-# Karl Anders Øygard <Karl.Oygard@fou.telenor.no>, 1996.
+# Karl Anders Ã˜ygard <Karl.Oygard@fou.telenor.no>, 1996.
 #
 msgid ""
 msgstr ""
-"Project-Id-Version: GNU hello 2.1.1\n"
+"Project-Id-Version: hello-2.9\n"
 "Report-Msgid-Bugs-To: bug-hello@gnu.org\n"
-"POT-Creation-Date: 2013-10-10 00:45+0100\n"
-"PO-Revision-Date: 2004-02-13 23:59+0100\n"
-"Last-Translator: Eivind Tagseth <eivindt@multinet.no>\n"
+"POT-Creation-Date: 2014-11-16 11:53+0000\n"
+"PO-Revision-Date: 2014-08-16 11:09+0100\n"
+"Last-Translator: Ã…ka Sikrom <a4@hush.com>\n"
 "Language-Team: Norwegian Bokmaal <i18n-nb@lister.ping.uio.no>\n"
 "Language: nb\n"
 "MIME-Version: 1.0\n"
-"Content-Type: text/plain; charset=ISO-8859-1\n"
-"Content-Transfer-Encoding: 8-bit\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"X-Generator: Poedit 1.5.4\n"
 
-#: src/hello.c:50
+#: src/hello.c:60
 msgid "Hello, world!"
 msgstr "Hei, verden!"
 
-#: src/hello.c:92
-#, fuzzy
+#: src/hello.c:84
 msgid "hello, world"
-msgstr "hei, verden\n"
+msgstr "hei, verden"
 
-#: src/hello.c:103
-#, c-format
-msgid "%s: extra operand: %s\n"
-msgstr ""
+#: src/hello.c:94
+#, fuzzy
+msgid "extra operand"
+msgstr "%s: ekstra parameter: %s\n"
 
-#: src/hello.c:105
-#, c-format
-msgid "Try `%s --help' for more information.\n"
-msgstr "Prøv med «%s --help» for mer informasjon.\n"
-
-#: src/hello.c:113
-#, c-format
-msgid "%s: conversion to a multibyte string failed\n"
-msgstr ""
+#: src/hello.c:100
+#, fuzzy, c-format
+msgid "conversion to a multibyte string failed"
+msgstr "%s: klarte ikke Ã¥ konvertere til en multibyte-streng\n"
 
 #. TRANSLATORS: --help output 1 (synopsis)
 #. no-wrap
-#: src/hello.c:156
-#, fuzzy, c-format
+#: src/hello.c:121
+#, c-format
 msgid "Usage: %s [OPTION]...\n"
-msgstr "Bruk: %s [FLAGG]\n"
+msgstr "Bruk: %s [VALG] â€¦\n"
 
 #. TRANSLATORS: --help output 2 (brief description)
 #. no-wrap
-#: src/hello.c:161
+#: src/hello.c:126
 msgid "Print a friendly, customizable greeting.\n"
-msgstr ""
+msgstr "Skriv ut en hyggelig, tilpassbar hilsemelding.\n"
 
 #. TRANSLATORS: --help output 3: options 1/2
 #. no-wrap
-#: src/hello.c:167
+#: src/hello.c:132
 msgid ""
 "  -h, --help          display this help and exit\n"
 "  -v, --version       display version information and exit\n"
 msgstr ""
-"  -h, --help          vis denne hjelpteksten og avslutt\n"
-"  -V, --version       vis versjonsinformasjon og avslutt\n"
+"  -h, --help          vis denne hjelpeteksten og avslutt\n"
+"  -V, --version       vis versjon og avslutt\n"
 
 #. TRANSLATORS: --help output 4: options 2/2
 #. no-wrap
-#: src/hello.c:174
+#: src/hello.c:139
 #, fuzzy
 msgid ""
 "  -t, --traditional       use traditional greeting\n"
-"  -n, --next-generation   use next-generation greeting\n"
 "  -g, --greeting=TEXT     use TEXT as the greeting message\n"
 msgstr ""
-"  -t, --traditional       bruk tradisjonelt hilsningsformat\n"
-"  -n, --next-generation   bruk neste-generasjons hilsningsformat\n"
-"  -m, --mail              vis mailen din\n"
+"  -t, --traditional       bruk tradisjonell hilsing\n"
+"  -n, --next-generation   bruk nestegenerasjons hilsningsformat\n"
+"  -g, --greeting=TEKST     bruk valgt TEKST som hilsemelding\n"
 
 #. TRANSLATORS: --help output 5+ (reports)
 #. TRANSLATORS: the placeholder indicates the bug-reporting address
 #. for this application.  Please add _another line_ with the
 #. address for translation bugs.
 #. no-wrap
-#: src/hello.c:185
-#, fuzzy, c-format
+#: src/hello.c:149
+#, c-format
 msgid "Report bugs to: %s\n"
-msgstr "Rapporter feil til <%s>.\n"
+msgstr "Rapporter feil til %s\n"
 
-#: src/hello.c:188
-#, fuzzy, c-format
+#: src/hello.c:152
+#, c-format
 msgid "Report %s bugs to: %s\n"
-msgstr "Rapporter feil til <%s>.\n"
+msgstr "Rapporter %s- feil til %s\n"
 
-#: src/hello.c:192
+#: src/hello.c:156
 #, c-format
 msgid "%s home page: <%s>\n"
-msgstr ""
+msgstr "Nettside for %s: <%s>\n"
 
-#: src/hello.c:194
+#: src/hello.c:158
 #, c-format
 msgid "%s home page: <http://www.gnu.org/software/%s/>\n"
-msgstr ""
+msgstr "Nettside for %s: <http://www.gnu.org/software/%s/>\n"
 
-#: src/hello.c:197
+#: src/hello.c:161
 msgid "General help using GNU software: <http://www.gnu.org/gethelp/>\n"
 msgstr ""
+"Generell hjelp med bruk av GNU-programvare: <http://www.gnu.org/gethelp/>\n"
 
-#: src/hello.c:215
+#: src/hello.c:179
 #, c-format
 msgid ""
 "Copyright (C) %d Free Software Foundation, Inc.\n"
@@ -114,69 +111,76 @@ msgid ""
 "This is free software: you are free to change and redistribute it.\n"
 "There is NO WARRANTY, to the extent permitted by law.\n"
 msgstr ""
+"Opphavsrett (C) %d Free Software Foundation, Inc.\n"
+"Lisens GPLv3+: GNU GPL versjon 3 eller nyere <http://gnu.org/licenses/gpl."
+"html>\n"
+"Dette er fri programvare. Du stÃ¥r fritt til Ã¥ endre og/eller dele den "
+"videre.\n"
+"Det stilles imidlertid INGEN GARANTI, i den grad dette tillates av aktuelt "
+"lovverk.\n"
 
-#: lib/error.c:188
+#: lib/error.c:191
 msgid "Unknown system error"
-msgstr ""
+msgstr "Ukjent systemfeil"
 
 #: lib/getopt.c:547 lib/getopt.c:576
-#, fuzzy, c-format
+#, c-format
 msgid "%s: option '%s' is ambiguous; possibilities:"
-msgstr "%s: flagget «%s» er flertydig\n"
+msgstr "%s: valget Â«%sÂ» er flertydig, og kan bety fÃ¸lgende:"
 
 #: lib/getopt.c:624 lib/getopt.c:628
-#, fuzzy, c-format
+#, c-format
 msgid "%s: option '--%s' doesn't allow an argument\n"
-msgstr "%s: flagget «--%s» tar ikke argumenter\n"
+msgstr "%s: valget Â«--%sÂ» tillater ikke bruk av argumenter\n"
 
 #: lib/getopt.c:637 lib/getopt.c:642
-#, fuzzy, c-format
+#, c-format
 msgid "%s: option '%c%s' doesn't allow an argument\n"
-msgstr "%s: flagget «%c%s» tar ikke argumenter\n"
+msgstr "%s: valget Â«%c%sÂ» tillater ikke bruk av argumenter\n"
 
 #: lib/getopt.c:685 lib/getopt.c:704
-#, fuzzy, c-format
+#, c-format
 msgid "%s: option '--%s' requires an argument\n"
-msgstr "%s: flagget «%s» behøver et argument\n"
+msgstr "%s: valget Â«--%sÂ» krever et argument\n"
 
 #: lib/getopt.c:742 lib/getopt.c:745
-#, fuzzy, c-format
+#, c-format
 msgid "%s: unrecognized option '--%s'\n"
-msgstr "%s: ukjent flagg «--%s»\n"
+msgstr "%s: Â«--%sÂ» er et ukjent valg\n"
 
 #: lib/getopt.c:753 lib/getopt.c:756
-#, fuzzy, c-format
+#, c-format
 msgid "%s: unrecognized option '%c%s'\n"
-msgstr "%s: ukjent flagg «%c%s»\n"
+msgstr "%s: Â«%c%sÂ» er et ukjent valg\n"
 
 #: lib/getopt.c:805 lib/getopt.c:808
-#, fuzzy, c-format
+#, c-format
 msgid "%s: invalid option -- '%c'\n"
-msgstr "%s: ulovlig flagg -- %c\n"
+msgstr "%s: Â«%cÂ» er et ugyldig valg\n"
 
 #: lib/getopt.c:861 lib/getopt.c:878 lib/getopt.c:1088 lib/getopt.c:1106
-#, fuzzy, c-format
+#, c-format
 msgid "%s: option requires an argument -- '%c'\n"
-msgstr "%s: flagg behøver et argument -- %c\n"
+msgstr "%s: valget Â«%cÂ» krever et argument\n"
 
 #: lib/getopt.c:934 lib/getopt.c:950
-#, fuzzy, c-format
+#, c-format
 msgid "%s: option '-W %s' is ambiguous\n"
-msgstr "%s: flagg «-W %s» er flertydig\n"
+msgstr "%s: valget Â«-W %sÂ» er flertydig\n"
 
 #: lib/getopt.c:974 lib/getopt.c:992
-#, fuzzy, c-format
+#, c-format
 msgid "%s: option '-W %s' doesn't allow an argument\n"
-msgstr "%s: flagg «-W %s» tar ikke argumenter\n"
+msgstr "%s: valget Â«-W %sÂ» tillater ikke bruk av argumenter\n"
 
 #: lib/getopt.c:1013 lib/getopt.c:1031
-#, fuzzy, c-format
+#, c-format
 msgid "%s: option '-W %s' requires an argument\n"
-msgstr "%s: flagget «%s» behøver et argument\n"
+msgstr "%s: valget Â«-W %sÂ» krever et argument\n"
 
 #: lib/closeout.c:112
 msgid "write error"
-msgstr ""
+msgstr "skrivefeil"
 
 #. TRANSLATORS:
 #. Get translations for open and closing quotation marks.
@@ -201,80 +205,15 @@ msgstr ""
 #. and use glyphs suitable for your language.
 #: lib/quotearg.c:312
 msgid "`"
-msgstr ""
+msgstr "Â«"
 
 #: lib/quotearg.c:313
 msgid "'"
-msgstr ""
+msgstr "Â»"
 
 #: lib/xalloc-die.c:34
-#, fuzzy
 msgid "memory exhausted"
-msgstr "%s: Virtuelt minne oppbrukt\n"
+msgstr "minnet er oppbrukt"
 
-#~ msgid ""
-#~ "+---------------+\n"
-#~ "| Hello, world! |\n"
-#~ "+---------------+\n"
-#~ msgstr ""
-#~ "+--------------+\n"
-#~ "| Hei, verden! |\n"
-#~ "+--------------+\n"
-
-#~ msgid "%s: illegal option -- %c\n"
-#~ msgstr "%s: ulovlig flagg -- %c\n"
-
-#~ msgid "Too many arguments\n"
-#~ msgstr "For mange argumenter\n"
-
-#~ msgid "GNU hello, THE greeting printing program.\n"
-#~ msgstr "GNU hello, Det utimate hilsningsskriveprogrammet.\n"
-
-#~ msgid ""
-#~ "Copyright (C) %s Free Software Foundation, Inc.\n"
-#~ "There is NO warranty; not even for MERCHANTABILITY or FITNESS FOR A\n"
-#~ "PARTICULAR PURPOSE.  You may redistribute copies of GNU %s under the "
-#~ "terms\n"
-#~ "of the GNU General Public License.\n"
-#~ "For more information about these matters, see the file named COPYING.\n"
-#~ msgstr ""
-#~ "(Følgende tekst er en oversettelse som *kun* gis på en informativ basis.\n"
-#~ "For alle juridiske tolkninger gjelder den engelske originalteksten.)\n"
-#~ "\n"
-#~ "Copyright (C) %s Free Software Foundation, Inc.\n"
-#~ "Det er INGEN FORM FOR garanti; ikke engang for SALGBARHET eller EGNETHET\n"
-#~ "FOR NOEN SPESIELL ANVENDELSE.  Du kan redistribuere kopier av GNU %s "
-#~ "under\n"
-#~ "vilkårene gitt i GNU General Public License.\n"
-#~ "For mer infomrasjon om dette, se filen kalt COPYING.\n"
-
-#~ msgid "%s: Incompatible flags: -m and -t\n"
-#~ msgstr "%s: Ukompatible flagg: -m og -t\n"
-
-#~ msgid "%s: Who are you?\n"
-#~ msgstr "%s: Hvem er du?\n"
-
-#~ msgid "%s: Cannot find your mail spool file.\n"
-#~ msgstr "%s: Kan ikke finne mail-filen din.\n"
-
-#~ msgid "Nothing happens here."
-#~ msgstr "Her skjer ingen ting."
-
-#~ msgid ""
-#~ "This is GNU Hello, THE greeting printing program.\n"
-#~ "Usage: %s [OPTION]\n"
-#~ "  -h, --help          display this help and exit\n"
-#~ "  -v, --version       display version information and exit\n"
-#~ "  -t, --traditional   use traditional greeting format\n"
-#~ "  -m, --mail          print your mail\n"
-#~ "\n"
-#~ "Report bugs to bug-gnu-hello@prep.ai.mit.edu.\n"
-#~ msgstr ""
-#~ "Dette er GNU Hello, PROGRAMMET for utskrift av hilsninger.\n"
-#~ "Bruk: %s [FLAGG]\n"
-#~ "  -h, --help          vis denne hjelpteksten og avslutt\n"
-#~ "  -v, --version       vis programversjon og avslutt\n"
-#~ "  -t, --traditional   bruk tradisjonelt hilsningsformat\n"
-#~ "  -m, --mail          skriv ut din(e) brev\n"
-#~ "\n"
-#~ "Rapporter bugs til bug-gnu-hello@prep.ai.mit.edu.\n"
+#~ msgid "Try `%s --help' for more information.\n"
+#~ msgstr "PrÃ¸v Â«%s --helpÂ» for mer informasjon.\n"

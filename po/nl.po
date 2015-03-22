@@ -1,18 +1,18 @@
 # Dutch translations for GNU hello.
-# Copyright (C) 2012 Free Software Foundation, Inc.
+# Copyright (C) 2013 Free Software Foundation, Inc.
 # This file is distributed under the same license as the hello package.
 #
-# Ich finde man dürfte nur in seinem eigenen Haus rauchen.
+# “Two nice loaves in denim, please.”
 #
-# Benno Schulenberg <benno@vertaalt.nl>, 2007, 2010, 2011, 2012.
+# Benno Schulenberg <benno@vertaalt.nl>, 2007, 2010, 2011, 2012, 2013.
 # Ivo Timmermans <ivo@debian.org>, 2000, 2002.
 # Erick Branderhorst <branderh@debian.org>, 1996.
 msgid ""
 msgstr ""
-"Project-Id-Version: hello-2.8\n"
+"Project-Id-Version: hello-2.9\n"
 "Report-Msgid-Bugs-To: bug-hello@gnu.org\n"
-"POT-Creation-Date: 2013-10-10 00:45+0100\n"
-"PO-Revision-Date: 2012-04-21 20:12+0200\n"
+"POT-Creation-Date: 2014-11-16 11:53+0000\n"
+"PO-Revision-Date: 2013-10-10 14:23+0200\n"
 "Last-Translator: Benno Schulenberg <benno@vertaalt.nl>\n"
 "Language-Team: Dutch <vertaling@vrijschrift.org>\n"
 "Language: nl\n"
@@ -22,34 +22,28 @@ msgstr ""
 "X-Generator: Lokalize 1.0\n"
 "Plural-Forms: nplurals=2; plural=n != 1;\n"
 
-#: src/hello.c:50
+#: src/hello.c:60
 msgid "Hello, world!"
 msgstr "Hallo, wereld!"
 
 # Ima to smisel prevajati? :-)
-#: src/hello.c:92
-#, fuzzy
+#: src/hello.c:84
 msgid "hello, world"
-msgstr "hallo, wereld\n"
+msgstr "hallo, wereld"
 
-#: src/hello.c:103
-#, c-format
-msgid "%s: extra operand: %s\n"
+#: src/hello.c:94
+#, fuzzy
+msgid "extra operand"
 msgstr "%s: overtollig argument: %s\n"
 
-#: src/hello.c:105
-#, c-format
-msgid "Try `%s --help' for more information.\n"
-msgstr "Typ '%s --help' voor meer informatie.\n"
-
-#: src/hello.c:113
-#, c-format
-msgid "%s: conversion to a multibyte string failed\n"
-msgstr ""
+#: src/hello.c:100
+#, fuzzy, c-format
+msgid "conversion to a multibyte string failed"
+msgstr "%s: omzetting naar een multibyte-tekenreeks is mislukt\n"
 
 #. TRANSLATORS: --help output 1 (synopsis)
 #. no-wrap
-#: src/hello.c:156
+#: src/hello.c:121
 #, c-format
 msgid "Usage: %s [OPTION]...\n"
 msgstr ""
@@ -58,13 +52,13 @@ msgstr ""
 
 #. TRANSLATORS: --help output 2 (brief description)
 #. no-wrap
-#: src/hello.c:161
+#: src/hello.c:126
 msgid "Print a friendly, customizable greeting.\n"
-msgstr "Een vriendelijke, aanpasbare groet weergeven.\n"
+msgstr "Toont een vriendelijke, aanpasbare groet.\n"
 
 #. TRANSLATORS: --help output 3: options 1/2
 #. no-wrap
-#: src/hello.c:167
+#: src/hello.c:132
 msgid ""
 "  -h, --help          display this help and exit\n"
 "  -v, --version       display version information and exit\n"
@@ -74,11 +68,10 @@ msgstr ""
 
 #. TRANSLATORS: --help output 4: options 2/2
 #. no-wrap
-#: src/hello.c:174
+#: src/hello.c:139
 #, fuzzy
 msgid ""
 "  -t, --traditional       use traditional greeting\n"
-"  -n, --next-generation   use next-generation greeting\n"
 "  -g, --greeting=TEXT     use TEXT as the greeting message\n"
 msgstr ""
 "  -g, --greeting=TEKST    deze tekst tonen in plaats van de standaardgroet\n"
@@ -90,37 +83,37 @@ msgstr ""
 #. for this application.  Please add _another line_ with the
 #. address for translation bugs.
 #. no-wrap
-#: src/hello.c:185
+#: src/hello.c:149
 #, c-format
 msgid "Report bugs to: %s\n"
 msgstr ""
 "Rapporteer gebreken in het programma aan <%s>;\n"
 "meld fouten in de vertaling aan <vertaling@vrijschrift.org>.\n"
 
-#: src/hello.c:188
+#: src/hello.c:152
 #, c-format
 msgid "Report %s bugs to: %s\n"
 msgstr ""
 "Rapporteer gebreken in het programma '%s' aan <%s>;\n"
 "meld fouten in de vertaling aan <vertaling@vrijschrift.org>.\n"
 
-#: src/hello.c:192
+#: src/hello.c:156
 #, c-format
 msgid "%s home page: <%s>\n"
 msgstr "Webpagina van '%s': <%s>\n"
 
-#: src/hello.c:194
+#: src/hello.c:158
 #, c-format
 msgid "%s home page: <http://www.gnu.org/software/%s/>\n"
 msgstr "Webpagina van '%s': <http://www.gnu.org/software/%s/>\n"
 
-#: src/hello.c:197
+#: src/hello.c:161
 msgid "General help using GNU software: <http://www.gnu.org/gethelp/>\n"
 msgstr ""
 "Algemene hulp bij gebruik van GNU-software: <http://www.gnu.org/gethelp/>\n"
 
-#: src/hello.c:215
-#, fuzzy, c-format
+#: src/hello.c:179
+#, c-format
 msgid ""
 "Copyright (C) %d Free Software Foundation, Inc.\n"
 "License GPLv3+: GNU GPL version 3 or later <http://gnu.org/licenses/gpl."
@@ -128,13 +121,13 @@ msgid ""
 "This is free software: you are free to change and redistribute it.\n"
 "There is NO WARRANTY, to the extent permitted by law.\n"
 msgstr ""
-"Copyright (C) %s Free Software Foundation, Inc.\n"
+"Copyright (C) %d Free Software Foundation, Inc.\n"
 "Licentie GPLv3+: GNU GPL versie 3 of nieuwer <http://gnu.org/licenses/gpl."
 "html>\n"
 "Dit is vrije software: u mag het vrijelijk wijzigen en verder verspreiden.\n"
 "Er is GEEN GARANTIE, voor zover de wet dit toestaat.\n"
 
-#: lib/error.c:188
+#: lib/error.c:191
 msgid "Unknown system error"
 msgstr "Onbekende systeemfout"
 
@@ -229,6 +222,9 @@ msgstr "’"
 #: lib/xalloc-die.c:34
 msgid "memory exhausted"
 msgstr "onvoldoende geheugen beschikbaar"
+
+#~ msgid "Try `%s --help' for more information.\n"
+#~ msgstr "Typ '%s --help' voor meer informatie.\n"
 
 #~ msgid ""
 #~ "+---------------+\n"

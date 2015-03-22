@@ -1,62 +1,56 @@
 # Mensajes en español para GNU hello.
-# Copyright (C) 1996, 1997, 1998, 1999, 2000, 2001, 2002, 2006, 2010, 2011, 2012 Free Software Foundation, Inc.
+# Copyright (C) 1996, 1997, 1998, 1999, 2000, 2001, 2002, 2006, 2010, 2011, 2012, 2014 Free Software Foundation, Inc.
 # This file is distributed under the same license as the hello package.
 # Javier Romañach <jromanac@dial.eunet.es>, 1996.
-# Santiago Vila Doncel <sanvila@unex.es>, 1997, 1998, 1999, 2000, 2001, 2002, 2006, 2010, 2011, 2012.
+# Santiago Vila Doncel <sanvila@unex.es>, 1997-2002, 2006, 2010-2012, 2014.
 #
 msgid ""
 msgstr ""
-"Project-Id-Version: GNU hello 2.8\n"
+"Project-Id-Version: GNU hello 2.9\n"
 "Report-Msgid-Bugs-To: bug-hello@gnu.org\n"
-"POT-Creation-Date: 2013-10-10 00:45+0100\n"
-"PO-Revision-Date: 2012-04-24 00:36+0200\n"
+"POT-Creation-Date: 2014-11-16 11:53+0000\n"
+"PO-Revision-Date: 2014-04-08 16:30+0200\n"
 "Last-Translator: Santiago Vila Doncel <sanvila@unex.es>\n"
-"Language-Team: Spanish <es@li.org>\n"
+"Language-Team: Spanish <es@tp.org.es>\n"
 "Language: es\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8-bit\n"
 
-#: src/hello.c:50
+#: src/hello.c:60
 msgid "Hello, world!"
 msgstr "¡Hola mundo!"
 
-#: src/hello.c:92
-#, fuzzy
+#: src/hello.c:84
 msgid "hello, world"
-msgstr "hola mundo\n"
+msgstr "hola mundo"
 
-#: src/hello.c:103
-#, c-format
-msgid "%s: extra operand: %s\n"
+#: src/hello.c:94
+#, fuzzy
+msgid "extra operand"
 msgstr "%s: operando extra: %s\n"
 
-#: src/hello.c:105
-#, c-format
-msgid "Try `%s --help' for more information.\n"
-msgstr "Pruebe `%s --help' para más información.\n"
-
-#: src/hello.c:113
-#, c-format
-msgid "%s: conversion to a multibyte string failed\n"
-msgstr ""
+#: src/hello.c:100
+#, fuzzy, c-format
+msgid "conversion to a multibyte string failed"
+msgstr "%s: falló la conversión a cadena multibyte\n"
 
 #. TRANSLATORS: --help output 1 (synopsis)
 #. no-wrap
-#: src/hello.c:156
+#: src/hello.c:121
 #, c-format
 msgid "Usage: %s [OPTION]...\n"
 msgstr "Modo de empleo: %s [OPCIÓN]...\n"
 
 #. TRANSLATORS: --help output 2 (brief description)
 #. no-wrap
-#: src/hello.c:161
+#: src/hello.c:126
 msgid "Print a friendly, customizable greeting.\n"
 msgstr "Muestra un saludo amistoso y configurable.\n"
 
 #. TRANSLATORS: --help output 3: options 1/2
 #. no-wrap
-#: src/hello.c:167
+#: src/hello.c:132
 msgid ""
 "  -h, --help          display this help and exit\n"
 "  -v, --version       display version information and exit\n"
@@ -66,15 +60,14 @@ msgstr ""
 
 #. TRANSLATORS: --help output 4: options 2/2
 #. no-wrap
-#: src/hello.c:174
+#: src/hello.c:139
 #, fuzzy
 msgid ""
 "  -t, --traditional       use traditional greeting\n"
-"  -n, --next-generation   use next-generation greeting\n"
 "  -g, --greeting=TEXT     use TEXT as the greeting message\n"
 msgstr ""
-"  -t, --traditional       utiliza el formato de saludo tradicional\n"
-"  -n, --next-generation   utiliza el formato de saludo más novedoso\n"
+"  -t, --traditional       utiliza el saludo tradicional\n"
+"  -n, --next-generation   utiliza el saludo más novedoso\n"
 "  -g, --greeting=TEXTO    utiliza TEXTO como mensaje de saludo\n"
 
 # Nota: Edsger W. Dijkstra tiene un artículo muy interesante en el que explica, entre otras cosas,
@@ -88,36 +81,36 @@ msgstr ""
 #. for this application.  Please add _another line_ with the
 #. address for translation bugs.
 #. no-wrap
-#: src/hello.c:185
+#: src/hello.c:149
 #, c-format
 msgid "Report bugs to: %s\n"
 msgstr ""
 "Comunicar errores en el programa a: %s\n"
 "Comunicar errores de traducción a es@li.org y al último traductor.\n"
 
-#: src/hello.c:188
+#: src/hello.c:152
 #, c-format
 msgid "Report %s bugs to: %s\n"
 msgstr "Comunicar errores de %s a: %s\n"
 
-#: src/hello.c:192
+#: src/hello.c:156
 #, c-format
 msgid "%s home page: <%s>\n"
 msgstr "%s página inicial: <%s>\n"
 
-#: src/hello.c:194
+#: src/hello.c:158
 #, c-format
 msgid "%s home page: <http://www.gnu.org/software/%s/>\n"
 msgstr "%s página inicial: <http://www.gnu.org/software/%s/>\n"
 
-#: src/hello.c:197
+#: src/hello.c:161
 msgid "General help using GNU software: <http://www.gnu.org/gethelp/>\n"
 msgstr ""
 "Ayuda general sobre el uso de software de GNU: <http://www.gnu.org/gethelp/"
 ">\n"
 
-#: src/hello.c:215
-#, fuzzy, c-format
+#: src/hello.c:179
+#, c-format
 msgid ""
 "Copyright (C) %d Free Software Foundation, Inc.\n"
 "License GPLv3+: GNU GPL version 3 or later <http://gnu.org/licenses/gpl."
@@ -125,13 +118,13 @@ msgid ""
 "This is free software: you are free to change and redistribute it.\n"
 "There is NO WARRANTY, to the extent permitted by law.\n"
 msgstr ""
-"Copyright (C) %s Free Software Foundation, Inc.\n"
+"Copyright (C) %d Free Software Foundation, Inc.\n"
 "Licencia GPLv3+: GPL de GNU versión 3 o posterior <http://gnu.org/licenses/"
 "gpl.html>\n"
 "Esto es software libre, usted es libre de cambiarlo y redistribuirlo.\n"
 "No hay NINGUNA GARANTÍA, hasta donde permite la ley.\n"
 
-#: lib/error.c:188
+#: lib/error.c:191
 msgid "Unknown system error"
 msgstr "Error del sistema desconocido"
 
@@ -227,53 +220,5 @@ msgstr "»"
 msgid "memory exhausted"
 msgstr "memoria agotada"
 
-#~ msgid ""
-#~ "+---------------+\n"
-#~ "| Hello, world! |\n"
-#~ "+---------------+\n"
-#~ msgstr ""
-#~ "+---------------+\n"
-#~ "| ¡Hola, mundo! |\n"
-#~ "+---------------+\n"
-
-#~ msgid "%s: illegal option -- %c\n"
-#~ msgstr "%s: opción ilegal -- %c\n"
-
-#~ msgid "Too many arguments\n"
-#~ msgstr "Demasiados argumentos\n"
-
-#~ msgid "GNU hello, THE greeting printing program.\n"
-#~ msgstr "GNU hello, EL programa que imprime un saludo.\n"
-
-#~ msgid ""
-#~ "Copyright (C) %s Free Software Foundation, Inc.\n"
-#~ "There is NO warranty; not even for MERCHANTABILITY or FITNESS FOR A\n"
-#~ "PARTICULAR PURPOSE.  You may redistribute copies of GNU %s under the "
-#~ "terms\n"
-#~ "of the GNU General Public License.\n"
-#~ "For more information about these matters, see the file named COPYING.\n"
-#~ msgstr ""
-#~ "Copyright (C) %s Free Software Foundation, Inc.\n"
-#~ "No hay NINGUNA garantía; ni siquiera de COMERCIABILIDAD o IDONEIDAD PARA "
-#~ "UN\n"
-#~ "FIN DETERMINADO. Se pueden redistribuir copias de GNU %s bajo los "
-#~ "términos\n"
-#~ "de la Licencia Pública General de GNU.\n"
-#~ "Para más información sobre estas cuestiones, vea el fichero llamado "
-#~ "COPYING.\n"
-
-#~ msgid "%s: Incompatible flags: -m and -t\n"
-#~ msgstr "%s: Opciones incompatibles: -m y -t\n"
-
-#~ msgid "%s: Who are you?\n"
-#~ msgstr "%s: ¿Quién es usted?\n"
-
-# Sé que habría que buscar alguna otra palabra para `spool', pero ahora
-# mismo no se me ocurre ninguna apropiada, *y que además se entienda*.
-#~ msgid "%s: Cannot find your mail spool file.\n"
-#~ msgstr "%s: No se puede encontrar el fichero de `spool' de su correo.\n"
-
-# Sugerencia: No sucede, no ocurre. sv
-# preferiría mantener la informalidad. jr
-#~ msgid "Nothing happens here."
-#~ msgstr "Aquí no pasa nada."
+#~ msgid "Try `%s --help' for more information.\n"
+#~ msgstr "Pruebe `%s --help' para más información.\n"

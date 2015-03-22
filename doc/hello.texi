@@ -15,7 +15,8 @@
 This manual is for GNU Hello (version @value{VERSION}, @value{UPDATED}),
 which prints a friendly greeting (and serves as an example GNU package).
 
-Copyright @copyright{} 1992, 1993, 1996, 2002, 2005-2013 Free Software Foundation, Inc.
+Copyright @copyright{} 1992, 1993, 1996, 2002, 2005-2014 Free Software
+Foundation, Inc.
 
 @quotation
 Permission is granted to copy, distribute and/or modify this document
@@ -248,15 +249,6 @@ what the program does, as well as the synopsis of how to run the
 program.  Any environment variables which affect execution should also
 be mentioned (Hello doesn't have any).
 
-@item --next-generation
-@itemx -n
-@opindex --next-generation
-@opindex -n
-Output the greeting, but possibly including box-drawing
-characters or other fancy stuff, especially in translated locales.
-(If you would like to volunteer to translate messages for GNU packages,
-please see @url{http://translationproject.org}.)
-
 @item --traditional
 @itemx -t
 @opindex --traditional
@@ -274,7 +266,7 @@ standard output and then exit successfully.
 
 @end table
 
-If more than one of the greeting options (@option{-g}, @option{-n},
+If more than one of the greeting options (@option{-g},
 @option{-t}, and their long-named equivalents) is specified, whichever
 comes last takes precedence.
 
