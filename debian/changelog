@@ -1,3 +1,10 @@
+hello (2.10-1build1) zesty; urgency=medium
+
+  * No-change rebuild to pick up -fPIE compiler default in static
+    libraries
+
+ -- Steve Langasek <steve.langasek@ubuntu.com>  Wed, 12 Apr 2017 15:47:38 +0000
+
 hello (2.10-1) unstable; urgency=low
 
   * New upstream release.
