@@ -1,3 +1,10 @@
+hello (2.10-1ubuntu1) cosmic; urgency=medium
+
+  * Run the upstream tests as an autopkg test as well.
+  * Bump the standards version.
+
+ -- Matthias Klose <doko@ubuntu.com>  Mon, 24 Sep 2018 14:35:00 +0200
+
 hello (2.10-1build1) zesty; urgency=medium
 
   * No-change rebuild to pick up -fPIE compiler default in static
