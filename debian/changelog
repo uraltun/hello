@@ -1,3 +1,12 @@
+hello (2.10-2ubuntu1) eoan; urgency=low
+
+  * Merge from Debian unstable.  Remaining changes:
+    - Run the upstream tests as an autopkg test as well.
+  * Dropped changes, included in Debian:
+    - Bump the standards version.
+
+ -- Steve Langasek <steve.langasek@ubuntu.com>  Wed, 22 May 2019 16:36:23 -0700
+
 hello (2.10-2) unstable; urgency=medium
 
   * Fix version skew. Closes: #928887.
@@ -6,6 +15,20 @@ hello (2.10-2) unstable; urgency=medium
   * Rules-Requires-Root: no
 
  -- Santiago Vila <sanvila@debian.org>  Mon, 13 May 2019 20:06:50 +0200
+
+hello (2.10-1ubuntu1) cosmic; urgency=medium
+
+  * Run the upstream tests as an autopkg test as well.
+  * Bump the standards version.
+
+ -- Matthias Klose <doko@ubuntu.com>  Mon, 24 Sep 2018 14:35:00 +0200
+
+hello (2.10-1build1) zesty; urgency=medium
+
+  * No-change rebuild to pick up -fPIE compiler default in static
+    libraries
+
+ -- Steve Langasek <steve.langasek@ubuntu.com>  Wed, 12 Apr 2017 15:47:38 +0000
 
 hello (2.10-1) unstable; urgency=low
 
@@ -332,20 +355,11 @@ hello (1.3-7) experimental; urgency=LOW
  -- Ian Jackson <ian@chiark.chu.cam.ac.uk>  Tue, 6 Aug 1996 02:22:38 +0100
 
 hello (1.3-6); priority=LOW
-
   * Changed to ELF and added Pre-Depends.
   * Added Architecture field to control file.
-
  -- Ian Jackson <iwj10@cus.cam.ac.uk>  Thu, 14 Mar 1996 02:04:36 +0000
 
-hello (1.3-4); priority=LOW
-
-  * Added extended description.
-
- -- Ian Jackson <iwj10@cus.cam.ac.uk>  Fri, 28 Jul 1995 21:33:04 +0100
-
 Hello 1.3 Debian 3 - iwj
-
 * Corrected some mistakes in debian.README.
 * Added Package_Revision field to `control' file.
 * Added --quiet to install-info invocations.
@@ -354,9 +368,26 @@ Hello 1.3 Debian 3 - iwj
 * Removed debian.rules install target.
 * Added this Changelog.
 * Added Info manual copyright to debian.README.
-
 Hello 1.3 Debian 2 - iwj
 * New prerm script which calls install-info --remove.
-
 Hello 1.3 Debian 1 - iwj
 Initial release.
+
+hello (1.3-4); priority=LOW
+  * Added extended description.
+ -- Ian Jackson <iwj10@cus.cam.ac.uk>  Fri, 28 Jul 1995 21:33:04 +0100
+
+Hello 1.3 Debian 3 - iwj
+* Corrected some mistakes in debian.README.
+* Added Package_Revision field to `control' file.
+* Added --quiet to install-info invocations.
+* Generalised and commented debian.rules a bit more.
+* Put debian.rules into the public domain.
+* Removed debian.rules install target.
+* Added this Changelog.
+* Added Info manual copyright to debian.README.
+Hello 1.3 Debian 2 - iwj
+* New prerm script which calls install-info --remove.
+Hello 1.3 Debian 1 - iwj
+Initial release.
+

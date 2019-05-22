@@ -1,10 +1,12 @@
 Source: hello
 Section: devel
 Priority: optional
-Maintainer: Santiago Vila <sanvila@debian.org>
+Maintainer: Ubuntu Developers <ubuntu-devel-discuss@lists.ubuntu.com>
+XSBC-Original-Maintainer: Santiago Vila <sanvila@debian.org>
 Standards-Version: 4.3.0
 Build-Depends: debhelper-compat (= 9)
 Homepage: http://www.gnu.org/software/hello/
+XS-Testsuite: autopkgtest
 Rules-Requires-Root: no
 
 Package: hello
