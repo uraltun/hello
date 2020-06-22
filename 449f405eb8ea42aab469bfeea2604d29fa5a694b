@@ -1,0 +1,4 @@
+  * New upstream release.
+  * Repackaged source without GFDL manual.
+  * Option -m does no longer exist (Closes: #109895).
+  * Removed prerm and postinst, as info files are missing now.
