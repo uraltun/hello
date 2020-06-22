@@ -1,0 +1,4 @@
+  * Fix version skew. Closes: #928887.
+  * Drop debian/compat and use new syntax to specify compat level.
+  * Standards-Version: 4.3.0 (no changes for this).
+  * Rules-Requires-Root: no
