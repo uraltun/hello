@@ -1,0 +1,3 @@
+  * Removed all traces of checkroot. It's not really debian/rules job,
+    and the binary target will fail anyway if not invoked as root,
+    as there is a chown call.
