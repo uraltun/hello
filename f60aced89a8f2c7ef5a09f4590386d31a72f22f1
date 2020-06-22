@@ -1,0 +1,4 @@
+  * New upstream release.
+  * Use chown with numeric value 0 instead of "root".
+  * Make package cross-buildable without binutils-multiarch.
+    Thanks to Héctor Orón. Closes: #616444.
