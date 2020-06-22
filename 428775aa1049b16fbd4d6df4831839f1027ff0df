@@ -1,0 +1,2 @@
+  * No-change rebuild to pick up -fPIE compiler default in static
+    libraries
