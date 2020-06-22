@@ -1,0 +1,1 @@
+  * Handle exit code 77 for skipped autopkgtests.
