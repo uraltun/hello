@@ -1,0 +1,5 @@
+  * New upstream release.
+  * Dropped patch 01-no-usr-share-info-dir-gz in favour of new environment
+    variable AM_UPDATE_INFO_DIR supported by recent automake.
+  * Build with hardened flags (added CPPFLAGS and LDFLAGS).
+  * Put CFLAGS stuff in ./configure call, where they really belong.
