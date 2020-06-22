@@ -1,3 +1,17 @@
+2008-11-28  Karl Berry  <karl@gnu.org>
+
+	* hello.c (greeting_type): new type.
+	(main): make last greeting option be the one that counts.
+
+2007-06-26  Karl Berry  <karl@gnu.org>
+
+	* hello.c (print_version): update notice in --version.
+
+2006-12-11  Karl Berry  <karl@gnu.org>
+
+	* hello.c: /dev/full, not /dev/null. Report from Reinder Verlinde,
+	10 Dec 2006 11:33:26 +0100.
+
 2006-11-13  Karl Berry  <karl@gnu.org>
 
 	* hello.c (main): reinstall #if ENABLE_NLS, to avoid 
@@ -324,7 +338,7 @@ Tue Dec 19 08:26:09 1995  Karl Eichwalder  <ke@ke.Central.DE>
 
 	* Makefile.in: New file.
 
-Copyright (C) 1995, 1996, 1997, 1998, 1999, 2000, 2001, 2002, 2005, 2006
+Copyright 1995, 1996, 1997, 1998, 1999, 2000, 2001, 2002, 2005, 2006, 2008
 Free Software Foundation, Inc.
 
 Copying and distribution of this file, with or without modification,

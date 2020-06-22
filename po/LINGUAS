@@ -1,7 +1,7 @@
 # Set of available languages.
 #
 #  Copyright (C) 1992, 1993, 1995, 1996, 1997, 1998, 1999, 2000, 2001,
-#  2002, 2003, 2005, 2006 Free Software Foundation, Inc.
+#  2002, 2003, 2005, 2006, 2007 Free Software Foundation, Inc.
 #
 #  Copying and distribution of this file, with or without modification,
 #  are permitted in any medium without royalty provided the copyright
@@ -10,11 +10,11 @@ bg
 ca
 da
 de
-de_DE
 el
+en@boldquot
+en@quot
 eo
 es
-es_AR
 et
 eu
 fa
@@ -31,18 +31,21 @@ ja
 ka
 ko
 lv
+ms
 nb
 nl
 nn
 pl
 pt
 pt_BR
+rm
 ro
 ru
 sk
 sl
 sr
 sv
+th
 tr
 uk
 vi

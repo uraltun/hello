@@ -8,11 +8,11 @@ dnl This program is distributed in the hope that it will be useful, but
 dnl WITHOUT ANY WARRANTY, to the extent permitted by law; without even the
 dnl implied warranty of MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.
 
-AC_INIT([GNU Hello], [2.2], [bug-hello@gnu.org])
+AC_INIT([GNU Hello], [2.4], [bug-hello@gnu.org])
 
 dnl Must come before AM_INIT_AUTOMAKE.
 AC_CONFIG_AUX_DIR([build-aux])
-AM_INIT_AUTOMAKE([dist-bzip2 readme-alpha])
+AM_INIT_AUTOMAKE([readme-alpha])
 
 # Minimum Autoconf version required.
 AC_PREREQ(2.60)
@@ -46,9 +46,9 @@ fi
 AM_GNU_GETTEXT_VERSION([0.16])
 AM_GNU_GETTEXT([external])
 
-# Modified by Debian to exclude "doc/Makefile". 2006-12-09
 AC_CONFIG_FILES([Makefile
            contrib/Makefile
+           doc/Makefile
            gnulib/lib/Makefile
            man/Makefile
            po/Makefile.in
