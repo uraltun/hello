@@ -1,0 +1,2 @@
+  * Use `dpkg-buildflags` instead of $(shell dpkg-buildflags).
+    Otherwise "export DEB_BUILD_MAINT_OPTIONS=foo", when needed, does not work.
