@@ -1,7 +1,7 @@
 # Process this file with automake to produce Makefile.in (in this,
 # and all subdirectories).
 # Makefile for the top-level directory of GNU hello.
-# 
+#
 # Copyright 1997, 1998, 2005, 2006, 2007, 2008, 2009, 2010, 2011
 # Free Software Foundation, Inc.
 #
@@ -19,42 +19,13 @@
 # along with this program.  If not, see <http://www.gnu.org/licenses/>.
 
 # Find gnulib headers.
-ACLOCAL_AMFLAGS = -I gnulib/m4
+ACLOCAL_AMFLAGS = -I m4
 
 # Additional files to distribute.
-EXTRA_DIST = ChangeLog.O gnulib/m4/gnulib-cache.m4
+EXTRA_DIST = ChangeLog.O m4/gnulib-cache.m4
 
 # Subdirectories to descend into.
-SUBDIRS = contrib gnulib/lib po src doc man tests
-
-# `make diff' produces a diff against the previous version, given both
-# .tar.gz's in the current directory.  This should only be done when an
-# official release is made (and only if you care to provide diffs).
-#
-hello_pre = 2.6
-diff: diffcheck
-	@(echo "To apply these patches, cd to the main directory of the package"; \
-	  echo "and then use \`patch -p1 <hello-XXX.diff'."; \
-	  echo "Before building the program, run \`autogen.sh'."; ) > \
-	    $(PACKAGE)-$(hello_pre)-$(VERSION).diff
-	-diff -rc2P --exclude=configure --exclude=config.h.in --exclude=*.info \
-	    --exclude=*.gmo --exclude=aclocal.m4 \
-	    $(PACKAGE)-$(hello_pre) $(PACKAGE)-$(VERSION) >> \
-	    $(PACKAGE)-$(hello_pre)-$(VERSION).diff
-	gzip --force --best $(PACKAGE)-$(hello_pre)-$(VERSION).diff
-
-diffcheck:
-	for d in $(PACKAGE)-$(hello_pre) $(PACKAGE)-$(VERSION) ; do \
-	    if test ! -d $$d ; then \
-	        if test -r $$d.tar.gz ; then \
-	            tar -zxf $$d.tar.gz ; \
-                else \
-	            echo subdir $$d does not exist. ; \
-	            exit 1 ; \
-                fi ; \
-	    fi ; \
-	done
-
+SUBDIRS = contrib lib po src doc man tests
 
 # Verify that all source files using _() are listed in po/POTFILES.in.
 # The idea is to run this before making pretests, as well as official
@@ -87,10 +58,8 @@ po-check:
 # with the gendocs.sh script; see
 # http://www.gnu.org/prep/maintain/html_node/Invoking-gendocs_002esh.html
 #
-gnulib = $(HOME)/gnu/src/gnulib
-gendocs = $(gnulib)/build-aux/gendocs.sh
-gendocs_templates = $(gnulib)/doc
-gendocs_envvars = GENDOCS_TEMPLATE_DIR=$(gendocs_templates)
+gendocs = build-aux/gendocs.sh
+gendocs_envvars = GENDOCS_TEMPLATE_DIR=doc
 #
 manual = hello
 manual_title = "Hello, GNU World"
@@ -106,5 +75,5 @@ wwwdoc:
 	&& ln -s ../*.texi . \
 	&& env $(gendocs_envvars) $(gendocs) $(gendocs_args)
 	cp -arf $(doctemp)/manual/. $(www_target)
-	ls -ltu $(www_target)/html_node | tail  # cvs rm -f obsolete files
-# followed by cvs add of new files and cvs commit.
+	ls -ltu $(www_target)/html_node | tail  # $VCS rm -f obsolete files
+# followed by $VCS add of new files and cvs commit.
