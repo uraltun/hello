@@ -1,0 +1,4 @@
+  * Merge from Debian unstable.  Remaining changes:
+    - Run the upstream tests as an autopkg test as well.
+  * Dropped changes, included in Debian:
+    - Bump the standards version.
