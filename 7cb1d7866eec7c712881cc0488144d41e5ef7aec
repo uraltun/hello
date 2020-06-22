@@ -1,0 +1,9 @@
+  * New upstream release. Closes: #744195.
+  * Source now contains README-dev. Closes: #621716.
+  * Reworded short description.
+  * Renamed source and binary from "hello-debhelper" to "hello".
+  * The hello package will be renamed to "hello-traditional".
+  * The file debian/rules is now the one using dh.
+  * Added appropriate Conflicts/Replaces.
+  * Raised priority to "optional".
+  * Standards-Version: 3.9.5.
