@@ -1,0 +1,4 @@
+  * Modified doc/Makefile.in to avoid /usr/share/info/dir.gz.
+  * Removed prerm and postinst as they are no longer needed.
+  * Added dependency on "dpkg (>= 1.15.4) | install-info".
+  * Standards-Version: 3.8.3.
