@@ -1,0 +1,5 @@
+  * New upstream release.
+  * debian/patches: Drop 01-fix-i18n-of-default-message, no longer needed.
+  * debian/patches: Drop 99-config-guess-config-sub, no longer needed.
+  * debian/rules: Drop override_dh_auto_build hack, no longer needed.
+  * Standards-Version: 3.9.6 (no changes for this).
