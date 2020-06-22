@@ -19,33 +19,38 @@
 #include <config.h>
 #include "system.h"
 #include "progname.h"
+#include "xalloc.h"
 
-static const struct option longopts[] =
-{
-  { "greeting", required_argument, NULL, 'g' },
-  { "help", no_argument, NULL, 'h' },
-  { "next-generation", no_argument, NULL, 'n' },
-  { "traditional", no_argument, NULL, 't' },
-  { "version", no_argument, NULL, 'v' },
-  { NULL, 0, NULL, 0 }
+static const struct option longopts[] = {
+  {"greeting", required_argument, NULL, 'g'},
+  {"help", no_argument, NULL, 'h'},
+  {"next-generation", no_argument, NULL, 'n'},
+  {"traditional", no_argument, NULL, 't'},
+  {"version", no_argument, NULL, 'v'},
+  {NULL, 0, NULL, 0}
 };
 
 /* Different types of greetings; only one per invocation.  */
-typedef enum {
-  greet_gnu, greet_new, greet_traditional, greet_user
+typedef enum
+{
+  greet_traditional,
+  greet_new
 } greeting_type;
 
 /* Forward declarations.  */
 static void print_help (void);
 static void print_version (void);
+static void print_frame (const size_t len);
 
 int
 main (int argc, char *argv[])
 {
   int optc;
   int lose = 0;
-  const char *greeting_msg = NULL;
-  greeting_type g = greet_gnu;
+  const char *greeting_msg = _("Hello, world!");
+  wchar_t *mb_greeting;
+  size_t len;
+  greeting_type g = greet_traditional;
 
   set_program_name (argv[0]);
 
@@ -67,75 +72,78 @@ main (int argc, char *argv[])
   while ((optc = getopt_long (argc, argv, "g:hntv", longopts, NULL)) != -1)
     switch (optc)
       {
-      /* --help and --version exit immediately, per GNU coding standards.  */
+	/* --help and --version exit immediately, per GNU coding standards.  */
       case 'v':
-        print_version ();
-        exit (EXIT_SUCCESS);
-        break;
+	print_version ();
+	exit (EXIT_SUCCESS);
+	break;
       case 'g':
-        greeting_msg = optarg;
-        g = greet_user;
-        break;
+	greeting_msg = optarg;
+	break;
       case 'h':
-        print_help ();
-        exit (EXIT_SUCCESS);
-        break;
+	print_help ();
+	exit (EXIT_SUCCESS);
+	break;
       case 'n':
-        g = greet_new;
-        break;
+	g = greet_new;
+	break;
       case 't':
-        g = greet_traditional;
-        break;
+	g = greet_traditional;
+	greeting_msg = _("hello, world");
+	break;
       default:
-        lose = 1;
-        break;
+	lose = 1;
+	break;
       }
 
   if (lose || optind < argc)
     {
       /* Print error message and exit.  */
       if (optind < argc)
-        fprintf (stderr, _("%s: extra operand: %s\n"),
-                 program_name, argv[optind]);
+	fprintf (stderr, _("%s: extra operand: %s\n"), program_name,
+		 argv[optind]);
       fprintf (stderr, _("Try `%s --help' for more information.\n"),
-               program_name);
+	       program_name);
       exit (EXIT_FAILURE);
     }
 
+  len = mbsrtowcs(NULL, &greeting_msg, 0, NULL);
+  if (len == (size_t)-1)
+    {
+      fprintf (stderr, _("%s: conversion to a multibyte string failed\n"), program_name);
+      exit (EXIT_FAILURE);
+    }
+  mb_greeting = xmalloc((len + 1) * sizeof(wchar_t));
+  mbsrtowcs(mb_greeting, &greeting_msg, len + 1, NULL);
+
   /* Print greeting message and exit. */
-  if (g == greet_traditional)
-    printf (_("hello, world\n"));
-
-  else if (g == greet_new)
-    /* TRANSLATORS: Use box drawing characters or other fancy stuff
-       if your encoding (e.g., UTF-8) allows it.  If done so add the
-       following note, please:
-
-       [Note: For best viewing results use a UTF-8 locale, please.]
-    */
-        printf (_("\
-+---------------+\n\
-| Hello, world! |\n\
-+---------------+\n\
-"));
-
-  else if (g == greet_user)
-    puts (greeting_msg);
-
-  else if (g == greet_gnu)
-    puts (_("Hello, world!"));
-
-  else {
-    /* No need for this impossible message to be translated.  */
-    fprintf (stderr, "Impossible hello value %d\n", g);
-    exit (EXIT_FAILURE);
-  }
+  if (g != greet_new)
+    wprintf (L"%ls\n", mb_greeting);
+  else
+    {
+      print_frame (len);
+      wprintf (L"| %ls |\n", mb_greeting);
+      print_frame (len);
+    }
+  free(mb_greeting);
 
   exit (EXIT_SUCCESS);
 }
-
-
 
+
+/* Print new format upper and lower frame.  */
+
+void
+print_frame (const size_t len)
+{
+  size_t i;
+  fputws (L"+-", stdout);
+  for (i = 0; i < len; i++)
+    putwchar (L'-');
+  fputws (L"-+\n", stdout);
+}
+
+
 /* Print help info.  This long message is split into
    several pieces to help translators be able to align different
    blocks and identify the various pieces.  */
@@ -145,7 +153,7 @@ print_help (void)
 {
   /* TRANSLATORS: --help output 1 (synopsis)
      no-wrap */
-        printf (_("\
+  printf (_("\
 Usage: %s [OPTION]...\n"), program_name);
 
   /* TRANSLATORS: --help output 2 (brief description)
@@ -164,8 +172,8 @@ Print a friendly, customizable greeting.\n"), stdout);
   /* TRANSLATORS: --help output 4: options 2/2
      no-wrap */
   fputs (_("\
-  -t, --traditional       use traditional greeting format\n\
-  -n, --next-generation   use next-generation greeting format\n\
+  -t, --traditional       use traditional greeting\n\
+  -n, --next-generation   use next-generation greeting\n\
   -g, --greeting=TEXT     use TEXT as the greeting message\n"), stdout);
 
   printf ("\n");
@@ -178,26 +186,26 @@ Print a friendly, customizable greeting.\n"), stdout);
 Report bugs to: %s\n"), PACKAGE_BUGREPORT);
 #ifdef PACKAGE_PACKAGER_BUG_REPORTS
   printf (_("Report %s bugs to: %s\n"), PACKAGE_PACKAGER,
-          PACKAGE_PACKAGER_BUG_REPORTS);
+	  PACKAGE_PACKAGER_BUG_REPORTS);
 #endif
 #ifdef PACKAGE_URL
   printf (_("%s home page: <%s>\n"), PACKAGE_NAME, PACKAGE_URL);
 #else
   printf (_("%s home page: <http://www.gnu.org/software/%s/>\n"),
-          PACKAGE_NAME, PACKAGE);
+	  PACKAGE_NAME, PACKAGE);
 #endif
   fputs (_("General help using GNU software: <http://www.gnu.org/gethelp/>\n"),
-         stdout);
+	 stdout);
 }
-
-
 
+
+
 /* Print version and copyright information.  */
 
 static void
 print_version (void)
 {
-  printf ("hello (GNU %s) %s\n", PACKAGE, VERSION);
+  printf ("%s (%s) %s\n", PACKAGE, PACKAGE_NAME, VERSION);
   /* xgettext: no-wrap */
   puts ("");
 
@@ -205,9 +213,8 @@ print_version (void)
      as done here, to avoid having to retranslate the message when a new
      year comes around.  */
   printf (_("\
-Copyright (C) %s Free Software Foundation, Inc.\n\
+Copyright (C) %d Free Software Foundation, Inc.\n\
 License GPLv3+: GNU GPL version 3 or later <http://gnu.org/licenses/gpl.html>\n\
 This is free software: you are free to change and redistribute it.\n\
-There is NO WARRANTY, to the extent permitted by law.\n"),
-              "2011");
+There is NO WARRANTY, to the extent permitted by law.\n"), COPYRIGHT_YEAR);
 }

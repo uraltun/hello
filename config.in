@@ -1,5 +1,8 @@
 /* config.in.  Generated from configure.ac by autoheader.  */
 
+/* year in copyright message */
+#undef COPYRIGHT_YEAR
+
 /* Define to 1 if translation of program messages to the user's native
    language is requested. */
 #undef ENABLE_NLS
@@ -21,14 +24,23 @@
 /* Define to 1 when the gnulib module mbsinit should be tested. */
 #undef GNULIB_TEST_MBSINIT
 
+/* Define to 1 when the gnulib module mbsrtowcs should be tested. */
+#undef GNULIB_TEST_MBSRTOWCS
+
+/* Define to 1 when the gnulib module memchr should be tested. */
+#undef GNULIB_TEST_MEMCHR
+
 /* Define to 1 when the gnulib module strerror should be tested. */
 #undef GNULIB_TEST_STRERROR
 
-/* Define to 1 if you have the MacOS X function CFLocaleCopyCurrent in the
+/* Define to 1 if you have the <bp-sym.h> header file. */
+#undef HAVE_BP_SYM_H
+
+/* Define to 1 if you have the Mac OS X function CFLocaleCopyCurrent in the
    CoreFoundation framework. */
 #undef HAVE_CFLOCALECOPYCURRENT
 
-/* Define to 1 if you have the MacOS X function CFPreferencesCopyAppValue in
+/* Define to 1 if you have the Mac OS X function CFPreferencesCopyAppValue in
    the CoreFoundation framework. */
 #undef HAVE_CFPREFERENCESCOPYAPPVALUE
 
@@ -51,6 +63,10 @@
 /* Define to 1 if you have the declaration of `mbsinit', and to 0 if you
    don't. */
 #undef HAVE_DECL_MBSINIT
+
+/* Define to 1 if you have the declaration of `mbsrtowcs', and to 0 if you
+   don't. */
+#undef HAVE_DECL_MBSRTOWCS
 
 /* Define to 1 if you have the declaration of `program_invocation_name', and
    to 0 if you don't. */
@@ -87,11 +103,6 @@
 /* Define if you have the iconv() function and it works. */
 #undef HAVE_ICONV
 
-/* Define to 1 if the compiler supports one of the keywords 'inline',
-   '__inline__', '__inline' and effectively inlines functions marked as such.
-   */
-#undef HAVE_INLINE
-
 /* Define to 1 if you have the <inttypes.h> header file. */
 #undef HAVE_INTTYPES_H
 
@@ -101,17 +112,27 @@
 /* Define if you have <langinfo.h> and nl_langinfo(CODESET). */
 #undef HAVE_LANGINFO_CODESET
 
+/* Define to 1 if mmap()'s MAP_ANONYMOUS flag is available after including
+   config.h and <sys/mman.h>. */
+#undef HAVE_MAP_ANONYMOUS
+
 /* Define to 1 if you have the `mbrtowc' function. */
 #undef HAVE_MBRTOWC
 
 /* Define to 1 if you have the `mbsinit' function. */
 #undef HAVE_MBSINIT
 
+/* Define to 1 if you have the `mbsrtowcs' function. */
+#undef HAVE_MBSRTOWCS
+
 /* Define to 1 if <wchar.h> declares mbstate_t. */
 #undef HAVE_MBSTATE_T
 
 /* Define to 1 if you have the <memory.h> header file. */
 #undef HAVE_MEMORY_H
+
+/* Define to 1 if you have the `mprotect' function. */
+#undef HAVE_MPROTECT
 
 /* Define to 1 on MSVC platforms that have the "invalid parameter handler"
    concept. */
@@ -553,6 +574,9 @@
 /* Define to 1 if you have the `symlink' function. */
 #undef HAVE_SYMLINK
 
+/* Define to 1 if you have the <sys/mman.h> header file. */
+#undef HAVE_SYS_MMAN_H
+
 /* Define to 1 if you have the <sys/socket.h> header file. */
 #undef HAVE_SYS_SOCKET_H
 
@@ -597,6 +621,9 @@
 
 /* Define to 1 if you have the `__fpending' function. */
 #undef HAVE___FPENDING
+
+/* Define to a substitute value for mmap()'s MAP_ANONYMOUS flag. */
+#undef MAP_ANONYMOUS
 
 /* Define if the mbrtowc function has the NULL pwc argument bug. */
 #undef MBRTOWC_NULL_ARG1_BUG
@@ -650,7 +677,8 @@
 #undef _MINIX
 
 /* The _Noreturn keyword of C11.  */
-#ifndef _Noreturn
+#if ! (defined _Noreturn \
+       || (defined __STDC_VERSION__ && 201112 <= __STDC_VERSION__))
 # if (3 <= __GNUC__ || (__GNUC__ == 2 && 8 <= __GNUC_MINOR__) \
       || 0x5110 <= __SUNPRO_C)
 #  define _Noreturn __attribute__ ((__noreturn__))
@@ -676,7 +704,7 @@
 #ifndef _ALL_SOURCE
 # undef _ALL_SOURCE
 #endif
-/* Enable general extensions on MacOS X.  */
+/* Enable general extensions on Mac OS X.  */
 #ifndef _DARWIN_C_SOURCE
 # undef _DARWIN_C_SOURCE
 #endif
@@ -702,16 +730,62 @@
    used. */
 #undef __GETOPT_PREFIX
 
-/* Define to `__inline__' or `__inline' if that's what the C compiler
-   calls it, or to nothing if 'inline' is not supported under any name.  */
-#ifndef __cplusplus
-#undef inline
+/* _GL_INLINE is a portable alternative to ISO C99 plain 'inline'.
+   _GL_EXTERN_INLINE is a portable alternative to 'extern inline'.
+   _GL_INLINE_HEADER_BEGIN contains useful stuff to put
+     in an include file, before uses of _GL_INLINE.
+     It suppresses GCC's bogus "no previous prototype for 'FOO'" diagnostic,
+     when FOO is an inline function in the header; see
+     <http://gcc.gnu.org/bugzilla/show_bug.cgi?id=54113>.
+   _GL_INLINE_HEADER_END contains useful stuff to put
+     in the same include file, after uses of _GL_INLINE.
+
+   Suppress the use of extern inline on Apple's platforms,
+   as Libc-825.25 (2012-09-19) is incompatible with it; see
+   <http://lists.gnu.org/archive/html/bug-gnulib/2012-12/msg00023.html>.
+   Perhaps Apple will fix this some day.  */
+#if ((__GNUC__ \
+      ? defined __GNUC_STDC_INLINE__ && __GNUC_STDC_INLINE__ \
+      : 199901L <= __STDC_VERSION__) \
+     && !defined __APPLE__)
+# define _GL_INLINE inline
+# define _GL_EXTERN_INLINE extern inline
+#elif 2 < __GNUC__ + (7 <= __GNUC_MINOR__) && !defined __APPLE__
+# if __GNUC_GNU_INLINE__
+   /* __gnu_inline__ suppresses a GCC 4.2 diagnostic.  */
+#  define _GL_INLINE extern inline __attribute__ ((__gnu_inline__))
+# else
+#  define _GL_INLINE extern inline
+# endif
+# define _GL_EXTERN_INLINE extern
+#else
+# define _GL_INLINE static _GL_UNUSED
+# define _GL_EXTERN_INLINE static _GL_UNUSED
+#endif
+
+#if 4 < __GNUC__ + (6 <= __GNUC_MINOR__)
+# if defined __GNUC_STDC_INLINE__ && __GNUC_STDC_INLINE__
+#  define _GL_INLINE_HEADER_CONST_PRAGMA
+# else
+#  define _GL_INLINE_HEADER_CONST_PRAGMA \
+     _Pragma ("GCC diagnostic ignored \"-Wsuggest-attribute=const\"")
+# endif
+# define _GL_INLINE_HEADER_BEGIN \
+    _Pragma ("GCC diagnostic push") \
+    _Pragma ("GCC diagnostic ignored \"-Wmissing-prototypes\"") \
+    _Pragma ("GCC diagnostic ignored \"-Wmissing-declarations\"") \
+    _GL_INLINE_HEADER_CONST_PRAGMA
+# define _GL_INLINE_HEADER_END \
+    _Pragma ("GCC diagnostic pop")
+#else
+# define _GL_INLINE_HEADER_BEGIN
+# define _GL_INLINE_HEADER_END
 #endif
 
 /* Work around a bug in Apple GCC 4.0.1 build 5465: In C99 mode, it supports
    the ISO C 99 semantics of 'extern inline' (unlike the GNU C semantics of
    earlier versions), but does not display it by setting __GNUC_STDC_INLINE__.
-   __APPLE__ && __MACH__ test for MacOS X.
+   __APPLE__ && __MACH__ test for Mac OS X.
    __APPLE_CC__ tests for the Apple compiler and its version.
    __STDC_VERSION__ tests for the C99 mode.  */
 #if defined __APPLE__ && defined __MACH__ && __APPLE_CC__ >= 5465 && !defined __cplusplus && __STDC_VERSION__ >= 199901L && !defined __GNUC_STDC_INLINE__
@@ -720,6 +794,9 @@
 
 /* Define to a type if <wchar.h> does not define. */
 #undef mbstate_t
+
+/* Define to `int' if <sys/types.h> does not define. */
+#undef mode_t
 
 /* Define to `int' if <sys/types.h> does not define. */
 #undef pid_t

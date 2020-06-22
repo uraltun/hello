@@ -1,5 +1,5 @@
 # DO NOT EDIT! GENERATED AUTOMATICALLY!
-# Copyright (C) 2002-2012 Free Software Foundation, Inc.
+# Copyright (C) 2002-2013 Free Software Foundation, Inc.
 #
 # This file is free software; you can redistribute it and/or modify
 # it under the terms of the GNU General Public License as published by
@@ -51,6 +51,7 @@ AC_DEFUN([gl_EARLY],
   # Code from module exitfail:
   # Code from module extensions:
   AC_REQUIRE([gl_USE_SYSTEM_EXTENSIONS])
+  # Code from module extern-inline:
   # Code from module fdl:
   # Code from module fpending:
   # Code from module gendocs:
@@ -58,16 +59,18 @@ AC_DEFUN([gl_EARLY],
   # Code from module getopt-posix:
   # Code from module gettext:
   # Code from module gettext-h:
+  # Code from module gnu-web-doc-update:
   # Code from module gnumakefile:
   # Code from module gnupload:
   # Code from module havelib:
   # Code from module include_next:
-  # Code from module inline:
   # Code from module intprops:
   # Code from module localcharset:
   # Code from module maintainer-makefile:
   # Code from module mbrtowc:
   # Code from module mbsinit:
+  # Code from module mbsrtowcs:
+  # Code from module memchr:
   # Code from module msvc-inval:
   # Code from module msvc-nothrow:
   # Code from module nocrash:
@@ -87,6 +90,8 @@ AC_DEFUN([gl_EARLY],
   # Code from module strerror:
   # Code from module strerror-override:
   # Code from module string:
+  # Code from module strnlen1:
+  # Code from module sys_types:
   # Code from module unistd:
   # Code from module useless-if-before-free:
   # Code from module vc-list-files:
@@ -114,107 +119,122 @@ AC_DEFUN([gl_INIT],
   m4_pushdef([gl_LIBSOURCES_DIR], [])
   gl_COMMON
   gl_source_base='lib'
-gl_CLOSE_STREAM
-gl_MODULE_INDICATOR([close-stream])
-gl_CLOSEOUT
-gl_CONFIGMAKE_PREP
-gl_HEADER_ERRNO_H
-gl_ERROR
-if test $ac_cv_lib_error_at_line = no; then
-  AC_LIBOBJ([error])
-  gl_PREREQ_ERROR
-fi
-m4_ifdef([AM_XGETTEXT_OPTION],
-  [AM_][XGETTEXT_OPTION([--flag=error:3:c-format])
-   AM_][XGETTEXT_OPTION([--flag=error_at_line:5:c-format])])
-gl_FUNC_FPENDING
-if test $ac_cv_func___fpending = no; then
-  AC_LIBOBJ([fpending])
-  gl_PREREQ_FPENDING
-fi
-gl_FUNC_GETOPT_GNU
-if test $REPLACE_GETOPT = 1; then
-  AC_LIBOBJ([getopt])
-  AC_LIBOBJ([getopt1])
-  gl_PREREQ_GETOPT
-  dnl Arrange for unistd.h to include getopt.h.
-  GNULIB_GL_UNISTD_H_GETOPT=1
-fi
-AC_SUBST([GNULIB_GL_UNISTD_H_GETOPT])
-gl_MODULE_INDICATOR_FOR_TESTS([getopt-gnu])
-gl_FUNC_GETOPT_POSIX
-if test $REPLACE_GETOPT = 1; then
-  AC_LIBOBJ([getopt])
-  AC_LIBOBJ([getopt1])
-  gl_PREREQ_GETOPT
-  dnl Arrange for unistd.h to include getopt.h.
-  GNULIB_GL_UNISTD_H_GETOPT=1
-fi
-AC_SUBST([GNULIB_GL_UNISTD_H_GETOPT])
-dnl you must add AM_GNU_GETTEXT([external]) or similar to configure.ac.
-AM_GNU_GETTEXT_VERSION([0.18.1])
-AC_SUBST([LIBINTL])
-AC_SUBST([LTLIBINTL])
-# Autoconf 2.61a.99 and earlier don't support linking a file only
-# in VPATH builds.  But since GNUmakefile is for maintainer use
-# only, it does not matter if we skip the link with older autoconf.
-# Automake 1.10.1 and earlier try to remove GNUmakefile in non-VPATH
-# builds, so use a shell variable to bypass this.
-GNUmakefile=GNUmakefile
-m4_if(m4_version_compare([2.61a.100],
-        m4_defn([m4_PACKAGE_VERSION])), [1], [],
-      [AC_CONFIG_LINKS([$GNUmakefile:$GNUmakefile], [],
-        [GNUmakefile=$GNUmakefile])])
-gl_INLINE
-gl_LOCALCHARSET
-LOCALCHARSET_TESTS_ENVIRONMENT="CHARSETALIASDIR=\"\$(abs_top_builddir)/$gl_source_base\""
-AC_SUBST([LOCALCHARSET_TESTS_ENVIRONMENT])
-AC_CONFIG_COMMANDS_PRE([m4_ifdef([AH_HEADER],
-  [AC_SUBST([CONFIG_INCLUDE], m4_defn([AH_HEADER]))])])
-gl_FUNC_MBRTOWC
-if test $HAVE_MBRTOWC = 0 || test $REPLACE_MBRTOWC = 1; then
-  AC_LIBOBJ([mbrtowc])
-  gl_PREREQ_MBRTOWC
-fi
-gl_WCHAR_MODULE_INDICATOR([mbrtowc])
-gl_FUNC_MBSINIT
-if test $HAVE_MBSINIT = 0 || test $REPLACE_MBSINIT = 1; then
-  AC_LIBOBJ([mbsinit])
-  gl_PREREQ_MBSINIT
-fi
-gl_WCHAR_MODULE_INDICATOR([mbsinit])
-gl_MSVC_INVAL
-if test $HAVE_MSVC_INVALID_PARAMETER_HANDLER = 1; then
-  AC_LIBOBJ([msvc-inval])
-fi
-gl_MSVC_NOTHROW
-if test $HAVE_MSVC_INVALID_PARAMETER_HANDLER = 1; then
-  AC_LIBOBJ([msvc-nothrow])
-fi
-AC_CHECK_DECLS([program_invocation_name], [], [], [#include <errno.h>])
-AC_CHECK_DECLS([program_invocation_short_name], [], [], [#include <errno.h>])
-gl_QUOTEARG
-gt_TYPE_SSIZE_T
-AM_STDBOOL_H
-gl_STDDEF_H
-gl_STDLIB_H
-gl_FUNC_STRERROR
-if test $REPLACE_STRERROR = 1; then
-  AC_LIBOBJ([strerror])
-fi
-gl_MODULE_INDICATOR([strerror])
-gl_STRING_MODULE_INDICATOR([strerror])
-AC_REQUIRE([gl_HEADER_ERRNO_H])
-AC_REQUIRE([gl_FUNC_STRERROR_0])
-if test -n "$ERRNO_H" || test $REPLACE_STRERROR_0 = 1; then
-  AC_LIBOBJ([strerror-override])
-  gl_PREREQ_SYS_H_WINSOCK2
-fi
-gl_HEADER_STRING_H
-gl_UNISTD_H
-gl_WCHAR_H
-gl_WCTYPE_H
-gl_XALLOC
+  gl_CLOSE_STREAM
+  gl_MODULE_INDICATOR([close-stream])
+  gl_CLOSEOUT
+  gl_CONFIGMAKE_PREP
+  gl_HEADER_ERRNO_H
+  gl_ERROR
+  if test $ac_cv_lib_error_at_line = no; then
+    AC_LIBOBJ([error])
+    gl_PREREQ_ERROR
+  fi
+  m4_ifdef([AM_XGETTEXT_OPTION],
+    [AM_][XGETTEXT_OPTION([--flag=error:3:c-format])
+     AM_][XGETTEXT_OPTION([--flag=error_at_line:5:c-format])])
+  AC_REQUIRE([gl_EXTERN_INLINE])
+  gl_FUNC_FPENDING
+  if test $ac_cv_func___fpending = no; then
+    AC_LIBOBJ([fpending])
+    gl_PREREQ_FPENDING
+  fi
+  gl_FUNC_GETOPT_GNU
+  if test $REPLACE_GETOPT = 1; then
+    AC_LIBOBJ([getopt])
+    AC_LIBOBJ([getopt1])
+    gl_PREREQ_GETOPT
+    dnl Arrange for unistd.h to include getopt.h.
+    GNULIB_GL_UNISTD_H_GETOPT=1
+  fi
+  AC_SUBST([GNULIB_GL_UNISTD_H_GETOPT])
+  gl_MODULE_INDICATOR_FOR_TESTS([getopt-gnu])
+  gl_FUNC_GETOPT_POSIX
+  if test $REPLACE_GETOPT = 1; then
+    AC_LIBOBJ([getopt])
+    AC_LIBOBJ([getopt1])
+    gl_PREREQ_GETOPT
+    dnl Arrange for unistd.h to include getopt.h.
+    GNULIB_GL_UNISTD_H_GETOPT=1
+  fi
+  AC_SUBST([GNULIB_GL_UNISTD_H_GETOPT])
+  dnl you must add AM_GNU_GETTEXT([external]) or similar to configure.ac.
+  AM_GNU_GETTEXT_VERSION([0.18.1])
+  AC_SUBST([LIBINTL])
+  AC_SUBST([LTLIBINTL])
+  # Autoconf 2.61a.99 and earlier don't support linking a file only
+  # in VPATH builds.  But since GNUmakefile is for maintainer use
+  # only, it does not matter if we skip the link with older autoconf.
+  # Automake 1.10.1 and earlier try to remove GNUmakefile in non-VPATH
+  # builds, so use a shell variable to bypass this.
+  GNUmakefile=GNUmakefile
+  m4_if(m4_version_compare([2.61a.100],
+          m4_defn([m4_PACKAGE_VERSION])), [1], [],
+        [AC_CONFIG_LINKS([$GNUmakefile:$GNUmakefile], [],
+          [GNUmakefile=$GNUmakefile])])
+  gl_LOCALCHARSET
+  LOCALCHARSET_TESTS_ENVIRONMENT="CHARSETALIASDIR=\"\$(abs_top_builddir)/$gl_source_base\""
+  AC_SUBST([LOCALCHARSET_TESTS_ENVIRONMENT])
+  AC_CONFIG_COMMANDS_PRE([m4_ifdef([AH_HEADER],
+    [AC_SUBST([CONFIG_INCLUDE], m4_defn([AH_HEADER]))])])
+  gl_FUNC_MBRTOWC
+  if test $HAVE_MBRTOWC = 0 || test $REPLACE_MBRTOWC = 1; then
+    AC_LIBOBJ([mbrtowc])
+    gl_PREREQ_MBRTOWC
+  fi
+  gl_WCHAR_MODULE_INDICATOR([mbrtowc])
+  gl_FUNC_MBSINIT
+  if test $HAVE_MBSINIT = 0 || test $REPLACE_MBSINIT = 1; then
+    AC_LIBOBJ([mbsinit])
+    gl_PREREQ_MBSINIT
+  fi
+  gl_WCHAR_MODULE_INDICATOR([mbsinit])
+  gl_FUNC_MBSRTOWCS
+  if test $HAVE_MBSRTOWCS = 0 || test $REPLACE_MBSRTOWCS = 1; then
+    AC_LIBOBJ([mbsrtowcs])
+    AC_LIBOBJ([mbsrtowcs-state])
+    gl_PREREQ_MBSRTOWCS
+  fi
+  gl_WCHAR_MODULE_INDICATOR([mbsrtowcs])
+  gl_FUNC_MEMCHR
+  if test $HAVE_MEMCHR = 0 || test $REPLACE_MEMCHR = 1; then
+    AC_LIBOBJ([memchr])
+    gl_PREREQ_MEMCHR
+  fi
+  gl_STRING_MODULE_INDICATOR([memchr])
+  gl_MSVC_INVAL
+  if test $HAVE_MSVC_INVALID_PARAMETER_HANDLER = 1; then
+    AC_LIBOBJ([msvc-inval])
+  fi
+  gl_MSVC_NOTHROW
+  if test $HAVE_MSVC_INVALID_PARAMETER_HANDLER = 1; then
+    AC_LIBOBJ([msvc-nothrow])
+  fi
+  AC_CHECK_DECLS([program_invocation_name], [], [], [#include <errno.h>])
+  AC_CHECK_DECLS([program_invocation_short_name], [], [], [#include <errno.h>])
+  gl_QUOTEARG
+  gt_TYPE_SSIZE_T
+  AM_STDBOOL_H
+  gl_STDDEF_H
+  gl_STDLIB_H
+  gl_FUNC_STRERROR
+  if test $REPLACE_STRERROR = 1; then
+    AC_LIBOBJ([strerror])
+  fi
+  gl_MODULE_INDICATOR([strerror])
+  gl_STRING_MODULE_INDICATOR([strerror])
+  AC_REQUIRE([gl_HEADER_ERRNO_H])
+  AC_REQUIRE([gl_FUNC_STRERROR_0])
+  if test -n "$ERRNO_H" || test $REPLACE_STRERROR_0 = 1; then
+    AC_LIBOBJ([strerror-override])
+    gl_PREREQ_SYS_H_WINSOCK2
+  fi
+  gl_HEADER_STRING_H
+  gl_SYS_TYPES_H
+  AC_PROG_MKDIR_P
+  gl_UNISTD_H
+  gl_WCHAR_H
+  gl_WCTYPE_H
+  gl_XALLOC
   # End of code from modules
   m4_ifval(gl_LIBSOURCES_LIST, [
     m4_syscmd([test ! -d ]m4_defn([gl_LIBSOURCES_DIR])[ ||
@@ -359,6 +379,7 @@ AC_DEFUN([gl_FILE_LIST], [
   build-aux/config.rpath
   build-aux/do-release-commit-and-tag
   build-aux/gendocs.sh
+  build-aux/gnu-web-doc-update
   build-aux/gnupload
   build-aux/snippet/_Noreturn.h
   build-aux/snippet/arg-nonnull.h
@@ -396,6 +417,11 @@ AC_DEFUN([gl_FILE_LIST], [
   lib/localcharset.h
   lib/mbrtowc.c
   lib/mbsinit.c
+  lib/mbsrtowcs-impl.h
+  lib/mbsrtowcs-state.c
+  lib/mbsrtowcs.c
+  lib/memchr.c
+  lib/memchr.valgrind
   lib/msvc-inval.c
   lib/msvc-inval.h
   lib/msvc-nothrow.c
@@ -415,9 +441,14 @@ AC_DEFUN([gl_FILE_LIST], [
   lib/strerror-override.h
   lib/strerror.c
   lib/string.in.h
+  lib/strnlen1.c
+  lib/strnlen1.h
+  lib/sys_types.in.h
+  lib/unistd.c
   lib/unistd.in.h
   lib/verify.h
   lib/wchar.in.h
+  lib/wctype-h.c
   lib/wctype.in.h
   lib/xalloc-die.c
   lib/xalloc-oversized.h
@@ -431,6 +462,7 @@ AC_DEFUN([gl_FILE_LIST], [
   m4/errno_h.m4
   m4/error.m4
   m4/extensions.m4
+  m4/extern-inline.m4
   m4/fcntl-o.m4
   m4/fpending.m4
   m4/getopt.m4
@@ -440,7 +472,6 @@ AC_DEFUN([gl_FILE_LIST], [
   m4/gnulib-common.m4
   m4/iconv.m4
   m4/include_next.m4
-  m4/inline.m4
   m4/intdiv0.m4
   m4/intl.m4
   m4/intldir.m4
@@ -460,11 +491,15 @@ AC_DEFUN([gl_FILE_LIST], [
   m4/longlong.m4
   m4/mbrtowc.m4
   m4/mbsinit.m4
+  m4/mbsrtowcs.m4
   m4/mbstate_t.m4
+  m4/memchr.m4
+  m4/mmap-anon.m4
   m4/msvc-inval.m4
   m4/msvc-nothrow.m4
   m4/nls.m4
   m4/nocrash.m4
+  m4/off_t.m4
   m4/po.m4
   m4/printf-posix.m4
   m4/progtest.m4
@@ -478,6 +513,7 @@ AC_DEFUN([gl_FILE_LIST], [
   m4/strerror.m4
   m4/string_h.m4
   m4/sys_socket_h.m4
+  m4/sys_types_h.m4
   m4/threadlib.m4
   m4/uintmax_t.m4
   m4/unistd_h.m4

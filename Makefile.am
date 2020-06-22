@@ -22,7 +22,7 @@
 ACLOCAL_AMFLAGS = -I m4
 
 # Additional files to distribute.
-EXTRA_DIST = ChangeLog.O m4/gnulib-cache.m4
+EXTRA_DIST = README-dev ChangeLog.O m4/gnulib-cache.m4
 
 # Subdirectories to descend into.
 SUBDIRS = contrib lib po src doc man tests
@@ -63,7 +63,7 @@ gendocs_envvars = GENDOCS_TEMPLATE_DIR=doc
 #
 manual = hello
 manual_title = "Hello, GNU World"
-email = bug-hello@gnu.org
+email = $(PACKAGE_BUGREPORT)
 gendocs_args = --email $(email) $(manual) $(manual_title)
 #
 www_target = $(HOME)/gnu/www/hello/manual
