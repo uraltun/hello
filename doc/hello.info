@@ -1,14 +1,14 @@
 This is hello.info, produced by makeinfo version 4.13 from hello.texi.
 
-This manual is for GNU Hello (version 2.4, 28 November 2008), which
+This manual is for GNU Hello (version 2.5, 31 January 2010), which
 prints a friendly greeting (and serves as an example GNU package).
 
-   Copyright (C) 1992, 1993, 1996, 2002, 2005, 2006, 2007, 2008 Free
-Software Foundation, Inc.
+   Copyright (C) 1992, 1993, 1996, 2002, 2005, 2006, 2007, 2008, 2009,
+2010 Free Software Foundation, Inc.
 
      Permission is granted to copy, distribute and/or modify this
      document under the terms of the GNU Free Documentation License,
-     Version 1.2 or any later version published by the Free Software
+     Version 1.3 or any later version published by the Free Software
      Foundation; with no Invariant Sections, with no Front-Cover Texts,
      and with no Back-Cover Texts.  A copy of the license is included
      in the section entitled "GNU Free Documentation License".
@@ -24,7 +24,20 @@ File: hello.info,  Node: Top,  Next: Overview,  Up: (dir)
 GNU Hello
 *********
 
-This manual is for GNU Hello (version 2.4, 28 November 2008).
+This manual is for GNU Hello (version 2.5, 31 January 2010).
+
+   This manual is for GNU Hello (version 2.5, 31 January 2010), which
+prints a friendly greeting (and serves as an example GNU package).
+
+   Copyright (C) 1992, 1993, 1996, 2002, 2005, 2006, 2007, 2008, 2009,
+2010 Free Software Foundation, Inc.
+
+     Permission is granted to copy, distribute and/or modify this
+     document under the terms of the GNU Free Documentation License,
+     Version 1.3 or any later version published by the Free Software
+     Foundation; with no Invariant Sections, with no Front-Cover Texts,
+     and with no Back-Cover Texts.  A copy of the license is included
+     in the section entitled "GNU Free Documentation License".
 
 * Menu:
 
@@ -60,8 +73,8 @@ should adhere to.
    The Hello package also implements recommended development practices
 not embodied in the standards, using other GNU packages and features:
 
-   * It uses Automake (*note Introduction: (Automake)Top.) and hence
-     also Autoconf (*note Introduction: (Autoconf)Top.)  for
+   * It uses Automake (*note Introduction: (automake)Top.) and hence
+     also Autoconf (*note Introduction: (autoconf)Top.)  for
      configuration.
 
    * It uses Gnulib (*note Gnulib: (gnulib)Top.) to enhance portability
@@ -88,6 +101,22 @@ not embodied in the standards, using other GNU packages and features:
    GNU Hello is implemented in C.  GNU Gettext contains "hello world"
 examples in a variety of other programming languages; see the Gettext
 home page at `http://www.gnu.org/software/gettext/'.
+
+   The top-level `Makefile.am' in Hello also contains a few special
+targets for other projects to adapt as desired:
+
+`diff'
+     Make a diff from the previous release, assuming the current
+     tarball is in the current tarball.
+
+`po-check'
+     Verify that all source files using `_()' are included for
+     translation in `po/POTFILES.in', so translators will have all the
+     messages.
+
+`wwwdoc'
+     Sample procedure for updating the manual on the GNU web site, in
+     this case `http://www.gnu.org/software/hello/manual/'.
 
    GNU Hello was written by Mike Haertel, David MacKenzie, Jan
 Brittenson, Charles Hannum, Roland McGrath, Noah Friedman, Karl
@@ -706,31 +735,32 @@ Concept index
 * -n:                                    Invoking hello.       (line 31)
 * -t:                                    Invoking hello.       (line 38)
 * -v:                                    Invoking hello.       (line 42)
-* authors:                               Overview.             (line 54)
+* authors:                               Overview.             (line 70)
 * Autoconf:                              Overview.             (line 25)
 * Automake:                              Overview.             (line 25)
-* Berry, Karl:                           Overview.             (line 54)
-* Brittenson, Jan:                       Overview.             (line 54)
+* Berry, Karl:                           Overview.             (line 70)
+* Brittenson, Jan:                       Overview.             (line 70)
 * bug reporting:                         Reporting bugs.       (line  6)
 * checklist for bug reports:             Reporting bugs.       (line  9)
-* Eichwalder, Karl:                      Overview.             (line 54)
+* Eichwalder, Karl:                      Overview.             (line 70)
 * environment variables, help for:       Invoking hello.       (line 23)
 * examples:                              Sample output.        (line  6)
-* Friedman, Noah:                        Overview.             (line 54)
+* Friedman, Noah:                        Overview.             (line 70)
 * Gettext:                               Overview.             (line 32)
 * GNU coding standards:                  Overview.             (line 17)
 * GNU maintainer standards:              Overview.             (line 17)
 * Gnulib:                                Overview.             (line 29)
 * greetings:                             Overview.             (line  6)
-* Haertel, Mike:                         Overview.             (line 54)
-* Hannum, Charles:                       Overview.             (line 54)
+* Haertel, Mike:                         Overview.             (line 70)
+* Hannum, Charles:                       Overview.             (line 70)
 * help:                                  Invoking hello.       (line  6)
 * Help2man:                              Overview.             (line 40)
 * invoking:                              Invoking hello.       (line  6)
 * joke, not:                             Overview.             (line 12)
-* King, The:                             Overview.             (line 54)
-* MacKenzie, David:                      Overview.             (line 54)
-* McGrath, Roland:                       Overview.             (line 54)
+* King, The:                             Overview.             (line 70)
+* MacKenzie, David:                      Overview.             (line 70)
+* Makefile.am targets:                   Overview.             (line 54)
+* McGrath, Roland:                       Overview.             (line 70)
 * modern:                                Invoking hello.       (line 38)
 * options:                               Invoking hello.       (line  6)
 * overview:                              Overview.             (line  6)
@@ -747,12 +777,12 @@ Concept index
 
 
 Tag Table:
-Node: Top829
-Node: Overview1292
-Node: Sample output3805
-Node: Invoking hello4203
-Node: Reporting bugs5683
-Node: GNU Free Documentation License6959
-Node: Concept index32134
+Node: Top840
+Node: Overview1958
+Node: Sample output5002
+Node: Invoking hello5400
+Node: Reporting bugs6880
+Node: GNU Free Documentation License8156
+Node: Concept index33331
 
 End Tag Table
