@@ -1,0 +1,4 @@
+  * New upstream release.
+  * Added homepage field to control file.
+  * Added cross-compilation support. Closes: #550327.
+  * Standards-Version: 3.8.4 (no special changes for this).
