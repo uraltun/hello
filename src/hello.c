@@ -1,7 +1,8 @@
 /* hello.c -- print a greeting message and exit.
 
    Copyright 1992, 1995, 1996, 1997, 1998, 1999, 2000, 2001, 2002, 2005,
-   2006, 2007, 2008, 2010, 2011 Free Software Foundation, Inc.
+   2006, 2007, 2008, 2010, 2011, 2013, 2014 Free Software Foundation,
+   Inc.
 
    This program is free software: you can redistribute it and/or modify
    it under the terms of the GNU General Public License as published by
@@ -18,39 +19,31 @@
 
 #include <config.h>
 #include "system.h"
+#include "errno.h"
+#include "error.h"
 #include "progname.h"
 #include "xalloc.h"
 
 static const struct option longopts[] = {
   {"greeting", required_argument, NULL, 'g'},
   {"help", no_argument, NULL, 'h'},
-  {"next-generation", no_argument, NULL, 'n'},
   {"traditional", no_argument, NULL, 't'},
   {"version", no_argument, NULL, 'v'},
   {NULL, 0, NULL, 0}
 };
 
-/* Different types of greetings; only one per invocation.  */
-typedef enum
-{
-  greet_traditional,
-  greet_new
-} greeting_type;
-
 /* Forward declarations.  */
 static void print_help (void);
 static void print_version (void);
-static void print_frame (const size_t len);
 
 int
 main (int argc, char *argv[])
 {
   int optc;
   int lose = 0;
-  const char *greeting_msg = _("Hello, world!");
+  const char *greeting_msg;
   wchar_t *mb_greeting;
   size_t len;
-  greeting_type g = greet_traditional;
 
   set_program_name (argv[0]);
 
@@ -63,13 +56,16 @@ main (int argc, char *argv[])
   textdomain (PACKAGE);
 #endif
 
+  /* Having initialized gettext, get the default message. */
+  greeting_msg = _("Hello, world!");
+
   /* Even exiting has subtleties.  On exit, if any writes failed, change
      the exit status.  The /dev/full device on GNU/Linux can be used for
      testing; for instance, hello >/dev/full should exit unsuccessfully.
      This is implemented in the Gnulib module "closeout".  */
   atexit (close_stdout);
 
-  while ((optc = getopt_long (argc, argv, "g:hntv", longopts, NULL)) != -1)
+  while ((optc = getopt_long (argc, argv, "g:htv", longopts, NULL)) != -1)
     switch (optc)
       {
 	/* --help and --version exit immediately, per GNU coding standards.  */
@@ -84,11 +80,7 @@ main (int argc, char *argv[])
 	print_help ();
 	exit (EXIT_SUCCESS);
 	break;
-      case 'n':
-	g = greet_new;
-	break;
       case 't':
-	g = greet_traditional;
 	greeting_msg = _("hello, world");
 	break;
       default:
@@ -99,48 +91,21 @@ main (int argc, char *argv[])
   if (lose || optind < argc)
     {
       /* Print error message and exit.  */
-      if (optind < argc)
-	fprintf (stderr, _("%s: extra operand: %s\n"), program_name,
-		 argv[optind]);
-      fprintf (stderr, _("Try `%s --help' for more information.\n"),
-	       program_name);
-      exit (EXIT_FAILURE);
+      error (0, 0, "%s: %s", _("extra operand"), argv[optind]);
+      print_help ();
     }
 
   len = mbsrtowcs(NULL, &greeting_msg, 0, NULL);
   if (len == (size_t)-1)
-    {
-      fprintf (stderr, _("%s: conversion to a multibyte string failed\n"), program_name);
-      exit (EXIT_FAILURE);
-    }
+    error (EXIT_FAILURE, errno, _("conversion to a multibyte string failed"));
   mb_greeting = xmalloc((len + 1) * sizeof(wchar_t));
   mbsrtowcs(mb_greeting, &greeting_msg, len + 1, NULL);
 
   /* Print greeting message and exit. */
-  if (g != greet_new)
-    wprintf (L"%ls\n", mb_greeting);
-  else
-    {
-      print_frame (len);
-      wprintf (L"| %ls |\n", mb_greeting);
-      print_frame (len);
-    }
+  wprintf (L"%ls\n", mb_greeting);
   free(mb_greeting);
 
   exit (EXIT_SUCCESS);
-}
-
-
-/* Print new format upper and lower frame.  */
-
-void
-print_frame (const size_t len)
-{
-  size_t i;
-  fputws (L"+-", stdout);
-  for (i = 0; i < len; i++)
-    putwchar (L'-');
-  fputws (L"-+\n", stdout);
 }
 
 
@@ -173,7 +138,6 @@ Print a friendly, customizable greeting.\n"), stdout);
      no-wrap */
   fputs (_("\
   -t, --traditional       use traditional greeting\n\
-  -n, --next-generation   use next-generation greeting\n\
   -g, --greeting=TEXT     use TEXT as the greeting message\n"), stdout);
 
   printf ("\n");

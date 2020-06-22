@@ -1,4 +1,4 @@
-# Copyright (C) 2002-2013 Free Software Foundation, Inc.
+# Copyright (C) 2002-2014 Free Software Foundation, Inc.
 #
 # This file is free software; you can redistribute it and/or modify
 # it under the terms of the GNU General Public License as published by
@@ -27,24 +27,30 @@
 
 
 # Specification in the form of a command-line invocation:
-#   gnulib-tool --import --dir=. --local-dir=gl --lib=libhello --source-base=lib --m4-base=m4 --doc-base=doc --tests-base=tests --aux-dir=build-aux --no-conditional-dependencies --no-libtool --macro-prefix=gl announce-gen closeout do-release-commit-and-tag fdl gendocs getopt-gnu gettext gnu-web-doc-update gnupload maintainer-makefile mbsrtowcs progname readme-release wchar
+#   gnulib-tool --import --dir=. --local-dir=gl --lib=libhello --source-base=lib --m4-base=m4 --doc-base=doc --tests-base=tests --aux-dir=build-aux --makefile-name=gnulib.mk --no-conditional-dependencies --no-libtool --macro-prefix=gl announce-gen closeout configmake dirname do-release-commit-and-tag error fdl gendocs getopt-gnu gettext gitlog-to-changelog gnu-web-doc-update gnupload maintainer-makefile mbsrtowcs non-recursive-gnulib-prefix-hack progname readme-release update-copyright wchar
 
 # Specification in the form of a few gnulib-tool.m4 macro invocations:
 gl_LOCAL_DIR([gl])
 gl_MODULES([
   announce-gen
   closeout
+  configmake
+  dirname
   do-release-commit-and-tag
+  error
   fdl
   gendocs
   getopt-gnu
   gettext
+  gitlog-to-changelog
   gnu-web-doc-update
   gnupload
   maintainer-makefile
   mbsrtowcs
+  non-recursive-gnulib-prefix-hack
   progname
   readme-release
+  update-copyright
   wchar
 ])
 gl_AVOID([])
@@ -54,7 +60,7 @@ gl_PO_BASE([])
 gl_DOC_BASE([doc])
 gl_TESTS_BASE([tests])
 gl_LIB([libhello])
-gl_MAKEFILE_NAME([])
+gl_MAKEFILE_NAME([gnulib.mk])
 gl_MACRO_PREFIX([gl])
 gl_PO_DOMAIN([])
 gl_WITNESS_C_MACRO([])
