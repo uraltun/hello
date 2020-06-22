@@ -1,0 +1,2 @@
+  * Quote prefix in make install to fix FTBFS when there are spaces
+    in the working directory. Closes: #696855. Thanks to Dmitrijs Ledkovs.
