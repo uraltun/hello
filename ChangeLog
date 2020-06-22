@@ -1,3 +1,23 @@
+2010-04-05  Karl Berry  <karl@gnu.org>
+
+	* build-aux/srclist.txt: new file, input to (Gnulib's) srclist-update.
+
+2010-02-26  Karl Berry  <karl@gnu.org>
+
+	* configure.ac (AM_INIT_AUTOMAKE): enable dist-xz.
+
+2010-02-26  gettextize  <bug-gnu-gettext@gnu.org>
+
+	* gnulib/m4/gettext.m4: Upgrade to gettext-0.17.
+	* gnulib/m4/iconv.m4: Upgrade to gettext-0.17.
+	* gnulib/m4/lib-ld.m4: Upgrade to gettext-0.17.
+	* gnulib/m4/lib-link.m4: Upgrade to gettext-0.17.
+	* gnulib/m4/lib-prefix.m4: Upgrade to gettext-0.17.
+	* gnulib/m4/nls.m4: Upgrade to gettext-0.17.
+	* gnulib/m4/po.m4: Upgrade to gettext-0.17.
+	* gnulib/m4/progtest.m4: Upgrade to gettext-0.17.
+	* configure.ac (AM_GNU_GETTEXT_VERSION): Bump to 0.17.
+
 2010-02-07  Karl Berry  <karl@gnu.org>
 
 	* Version 2.5.

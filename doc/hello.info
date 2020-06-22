@@ -1,7 +1,7 @@
 This is hello.info, produced by makeinfo version 4.13 from hello.texi.
 
-This manual is for GNU Hello (version 2.5, 31 January 2010), which
-prints a friendly greeting (and serves as an example GNU package).
+This manual is for GNU Hello (version 2.6, 5 April 2010), which prints
+a friendly greeting (and serves as an example GNU package).
 
    Copyright (C) 1992, 1993, 1996, 2002, 2005, 2006, 2007, 2008, 2009,
 2010 Free Software Foundation, Inc.
@@ -24,9 +24,9 @@ File: hello.info,  Node: Top,  Next: Overview,  Up: (dir)
 GNU Hello
 *********
 
-This manual is for GNU Hello (version 2.5, 31 January 2010).
+This manual is for GNU Hello (version 2.6, 5 April 2010).
 
-   This manual is for GNU Hello (version 2.5, 31 January 2010), which
+   This manual is for GNU Hello (version 2.6, 5 April 2010), which
 prints a friendly greeting (and serves as an example GNU package).
 
    Copyright (C) 1992, 1993, 1996, 2002, 2005, 2006, 2007, 2008, 2009,
@@ -78,7 +78,9 @@ not embodied in the standards, using other GNU packages and features:
      configuration.
 
    * It uses Gnulib (*note Gnulib: (gnulib)Top.) to enhance portability
-     and avoid duplication of common sources.
+     and avoid duplication of common sources.  Both `gnulib-tool' and
+     `srclist-update' are used, for purposes of example.  See the
+     `README-dev' file in the distribution.
 
    * GNU Gettext (*note Introduction: (gettext)Top.) is used for
      internationalization support.  Hello's greeting has been translated
@@ -88,10 +90,10 @@ not embodied in the standards, using other GNU packages and features:
      Getopt Long Options: (libc)Getopt Long Options.) to parse options,
      thus supporting GNU-style long options such as `--help'.
 
-   * Man pages are generated with GNU `help2man' (*note Overview:
-     (help2man)Top.) from the `--help' output.  This relieves the
-     maintainers of the burden of maintaining man documentation
-     separately, yet provides a reasonable overview for man devotees.
+   * The Hello Man page is generated with GNU `help2man' (*note
+     Overview: (help2man)Top.) from the `--help' output.  This relieves
+     the maintainers from the burden of updating separate man
+     documentation, yet provides a reasonable overview for man devotees.
 
    * Finally, Texinfo (*note Introduction: (texinfo)Top.) is the
      documentation format for this manual.  It supports output in Info,
@@ -726,7 +728,7 @@ Concept index
 
 * --greeting:                            Invoking hello.       (line 16)
 * --help <1>:                            Invoking hello.       (line 20)
-* --help:                                Overview.             (line 36)
+* --help:                                Overview.             (line 38)
 * --next-generation:                     Invoking hello.       (line 31)
 * --traditional:                         Invoking hello.       (line 38)
 * --version:                             Invoking hello.       (line 42)
@@ -735,54 +737,56 @@ Concept index
 * -n:                                    Invoking hello.       (line 31)
 * -t:                                    Invoking hello.       (line 38)
 * -v:                                    Invoking hello.       (line 42)
-* authors:                               Overview.             (line 70)
+* authors:                               Overview.             (line 72)
 * Autoconf:                              Overview.             (line 25)
 * Automake:                              Overview.             (line 25)
-* Berry, Karl:                           Overview.             (line 70)
-* Brittenson, Jan:                       Overview.             (line 70)
+* Berry, Karl:                           Overview.             (line 72)
+* Brittenson, Jan:                       Overview.             (line 72)
 * bug reporting:                         Reporting bugs.       (line  6)
 * checklist for bug reports:             Reporting bugs.       (line  9)
-* Eichwalder, Karl:                      Overview.             (line 70)
+* Eichwalder, Karl:                      Overview.             (line 72)
 * environment variables, help for:       Invoking hello.       (line 23)
 * examples:                              Sample output.        (line  6)
-* Friedman, Noah:                        Overview.             (line 70)
-* Gettext:                               Overview.             (line 32)
+* Friedman, Noah:                        Overview.             (line 72)
+* Gettext:                               Overview.             (line 34)
 * GNU coding standards:                  Overview.             (line 17)
 * GNU maintainer standards:              Overview.             (line 17)
 * Gnulib:                                Overview.             (line 29)
 * greetings:                             Overview.             (line  6)
-* Haertel, Mike:                         Overview.             (line 70)
-* Hannum, Charles:                       Overview.             (line 70)
+* Haertel, Mike:                         Overview.             (line 72)
+* Hannum, Charles:                       Overview.             (line 72)
 * help:                                  Invoking hello.       (line  6)
-* Help2man:                              Overview.             (line 40)
+* Help2man:                              Overview.             (line 42)
 * invoking:                              Invoking hello.       (line  6)
 * joke, not:                             Overview.             (line 12)
-* King, The:                             Overview.             (line 70)
-* MacKenzie, David:                      Overview.             (line 70)
-* Makefile.am targets:                   Overview.             (line 54)
-* McGrath, Roland:                       Overview.             (line 70)
+* King, The:                             Overview.             (line 72)
+* MacKenzie, David:                      Overview.             (line 72)
+* Makefile.am targets:                   Overview.             (line 56)
+* McGrath, Roland:                       Overview.             (line 72)
 * modern:                                Invoking hello.       (line 38)
 * options:                               Invoking hello.       (line  6)
 * overview:                              Overview.             (line  6)
 * patches, contributing:                 Reporting bugs.       (line 32)
 * problems:                              Reporting bugs.       (line  6)
+* README-dev source file:                Overview.             (line 29)
 * reporting bugs:                        Reporting bugs.       (line  6)
 * sample output:                         Sample output.        (line  6)
+* srclist-update script:                 Overview.             (line 29)
 * standards, GNU coding:                 Overview.             (line 17)
 * standards, GNU maintainer:             Overview.             (line 17)
-* Texinfo:                               Overview.             (line 45)
+* Texinfo:                               Overview.             (line 47)
 * traditional:                           Invoking hello.       (line 38)
 * usage:                                 Invoking hello.       (line  6)
 
 
 
 Tag Table:
-Node: Top840
-Node: Overview1958
-Node: Sample output5002
-Node: Invoking hello5400
-Node: Reporting bugs6880
-Node: GNU Free Documentation License8156
-Node: Concept index33331
+Node: Top837
+Node: Overview1949
+Node: Sample output5132
+Node: Invoking hello5530
+Node: Reporting bugs7010
+Node: GNU Free Documentation License8286
+Node: Concept index33461
 
 End Tag Table
