@@ -1,0 +1,4 @@
+  * New upstream release.
+  * Drop unused INSTALL_PROGRAM stuff.
+  * Switch to 3.0 (quilt) source format.
+  * Standards-Version: 3.9.1 (no special changes for this).
