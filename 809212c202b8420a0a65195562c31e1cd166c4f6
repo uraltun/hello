@@ -1,0 +1,3 @@
+  * Get CFLAGS from dpkg-buildflags.
+  * Drop -g as it's provided by dpkg-buildflags. Add -Wall as it's not.
+  * Drop noopt handling, dpkg-buildflags already takes care of that.
