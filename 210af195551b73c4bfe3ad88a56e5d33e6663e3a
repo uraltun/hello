@@ -1,0 +1,3 @@
+  * Added debian/watch file. Closes: #489213.
+  * Removed unneeded section .comment from binary. Closes: #428722.
+  * Run "make distclean" only if Makefile exists, but do not ignore errors.
