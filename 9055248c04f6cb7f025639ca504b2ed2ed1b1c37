@@ -1,0 +1,5 @@
+  * Ubuntu Impish will be switching default dpkg compression format to
+    Zstd. This upload is the first canary to signal the archive format
+    change. dpkg in Ubuntu supports zstd in xenial and up. If any issues
+    are identified with this package, please report them at
+    https://pad.lv/1923845 LP: #1923845
