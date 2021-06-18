@@ -1,3 +1,13 @@
+hello (2.10-2ubuntu3) impish; urgency=medium
+
+  * Ubuntu Impish will be switching default dpkg compression format to
+    Zstd. This upload is the first canary to signal the archive format
+    change. dpkg in Ubuntu supports zstd in xenial and up. If any issues
+    are identified with this package, please report them at
+    https://pad.lv/1923845 LP: #1923845
+
+ -- Dimitri John Ledkov <xnox@ubuntu.com>  Fri, 18 Jun 2021 11:58:54 +0100
+
 hello (2.10-2ubuntu2) eoan; urgency=medium
 
   * Handle exit code 77 for skipped autopkgtests.
