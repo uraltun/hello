@@ -1,3 +1,9 @@
+hello (2.10-3build1) noble; urgency=high
+
+  * No change rebuild for 64-bit time_t and frame pointers.
+
+ -- Julian Andres Klode <juliank@ubuntu.com>  Mon, 08 Apr 2024 17:58:52 +0200
+
 hello (2.10-3) unstable; urgency=medium
 
   * Add some autopkgtests. Closes: #871622.
