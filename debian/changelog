@@ -1,3 +1,9 @@
+hello (2.10-3build2) oracular; urgency=medium
+
+  * No-change rebuild to bump version in oracular.
+
+ -- Marc Deslauriers <marc.deslauriers@ubuntu.com>  Mon, 27 May 2024 07:18:24 -0400
+
 hello (2.10-3build1) noble; urgency=high
 
   * No change rebuild for 64-bit time_t and frame pointers.
