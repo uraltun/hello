@@ -1,5 +1,4 @@
 Test-Command: hello
-Depends: @
 
-Tests: upstream-tests
-Depends: @
+Tests: upstream
+Restrictions: build-needed, rw-build-tree, allow-stderr
