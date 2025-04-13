@@ -1,0 +1,9 @@
+  * Drop help2man from Build-Depends (not needed when using gbp/Salsa).
+  * Run autopkgtests in a way which also works for other GNU packages.
+    This change also fixes indirectly some undesired side effects
+    of the old ad-hoc setup. Closes: #1034115.
+  * Source should be buildable after a successful build. Closes: #1044215.
+  * Hardcode COPYRIGHT_YEAR to make the build reproducible.
+  * Drop obsolete debian/rules-old.
+  * Update standards version.
+  * Add debian/salsa-ci.yml.
