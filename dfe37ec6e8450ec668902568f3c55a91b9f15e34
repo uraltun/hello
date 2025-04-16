@@ -1,0 +1,2 @@
+  * Add autopkgtest dependency on make. Closes: #1103293.
+    Thanks to Jochen Sprickerhof.
