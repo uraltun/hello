@@ -1,3 +1,10 @@
+hello (2.10-5) unstable; urgency=medium
+
+  * Add autopkgtest dependency on make. Closes: #1103293.
+    Thanks to Jochen Sprickerhof.
+
+ -- Santiago Vila <sanvila@debian.org>  Wed, 16 Apr 2025 11:50:00 +0200
+
 hello (2.10-4) unstable; urgency=medium
 
   * Drop help2man from Build-Depends (not needed when using gbp/Salsa).
