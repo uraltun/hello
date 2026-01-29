@@ -1,3 +1,9 @@
+hello (2.10-5ubuntu1~test1) resolute; urgency=medium
+
+  * webhook test
+
+ -- Ural Tunaboyu <ural.tunaboyu@canonical.com>  Thu, 29 Jan 2026 06:54:45 -0800
+
 hello (2.10-5) unstable; urgency=medium
 
   * Add autopkgtest dependency on make. Closes: #1103293.
